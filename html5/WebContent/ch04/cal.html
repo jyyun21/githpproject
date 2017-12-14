@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>폼 요소</title>
+<script type="text/javascript">
+	function move() {
+		var calendar = document.getElementById("calendar");
+		calendar.stepUp(2);
+	}
+</script>
+</head>
+<body>
+	<form>
+		<input type="date" id="calendar" min="2014-01-01" max="2014-12-31"
+			step="2"> <input id="button" type="button" value="이동"
+			onclick="move()"> <!-- 버튼을 누르면 4씩 꺼짐. setp="2" + calendar.stepUp(2) -->
+	</form>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var list;
+	function st() {
+		list = document.getElementById("list");
+		add = document.getElementById("add"); //id가 add인 아이를 가져옴  add버튼인 애와 연결
+		remove = document.getElementById("remove");
+		clear = document.getElementById("clear");
+		add.addEventListener("click", addData); //add버튼을click하면 addDate함수가 실행된다.
+		remove.addEventListener("click", removeData); //remove버튼을 click하면 addDate함수가 실행된다.
+		clear.addEventListener("click", clearData); //청소버튼을 click하면 clearDate함수가 실행된다.
+		init(); //function init()실행
+	}
+	function init() {
+		list.innerHTML = ""; //id가 list인 놈에서  html문 작성
+		for(var i =0; i<localStorage.length; i++){
+			var key = localStorage.key(i); //localStorage에서 key 를 가져옴
+			//select에서 opiton을 추가함
+			list.options[list.options.length] = new Option("키 : "+key+",값 : "+localStorage[key], key); /* 옵션의 구성  new Options(보여줄 문자, option의 value?) */
+			//option의 length는 추가할때마다 늘어난다. 
+		}
+	}
+	function addData() {
+		var key = document.getElementById("key").value; //id가 key인 것의 값을 가져옴
+		var val = document.getElementById("val").value; 
+		localStorage[key] = val; //localStorage에 key와 value값 추가됨
+		init(); //입력한다음에 다시 보여줘
+		document.getElementById("key").value="";
+		document.getElementById("val").value="";
+		
+	}
+	function removeData() {
+		if(list.selectedIndex <0) return ;//선택한 index가 없으면. 없으면 -1이 나온다.
+		var select = list.options[list.selectedIndex].value; //option에서 선택한값index의 값을 가져와라, 여기서 option의 value는 localStorage의 key값이 들어가있다.
+		localStorage.removeItem(select); //그래서 받아온 key값으로 localStorage를 지운다.
+		//localStorage.clear(); //전체 삭제!!
+		init(); //지운다음에 다시 보여줘라
+	}
+	function clearData() {
+		localStorage.clear();
+		init();
+	}
+</script>
+</head>
+<!-- site마다 localStorage가 있다. -->
+<body onload="st()">
+<select size="10" id="list"></select>
+<fieldset>
+ 	키  : <input type="text" id="key"><p>
+ 	값  : <input type="text" id="val"><p>
+ 	<input type="button" value="입력"  id="add">
+ 	<input type="button" value="삭제"  id="remove"><p>
+ 	<input type="button" value="청소"  id="clear">
+</fieldset>
+</body>
+</html>

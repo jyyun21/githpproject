@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#paper {
+	border: 5px solid green;
+}
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		var a4 = document.getElementById("paper");
+		var ctx = a4.getContext("2d");
+		ctx.strokeStyle = "blue";
+		ctx.arc(80,80, 60,0, Math.PI/180*150, true);//true는 반시계반향
+		//arc(x, y, r, startAngle, endAngle, anticlockwise)
+		ctx.stroke();
+	}
+</script>
+</head>
+<body>
+	<canvas id="paper" width="300" height="300"></canvas>
+
+</body>
+</html>

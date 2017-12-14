@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#paper {
+	border: 5px solid green;
+}
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		var a4 = document.getElementById("paper");
+		var ctx = a4.getContext("2d");
+		//경로 그리는 함수
+		ctx.strokeStyle = "red"	;
+		ctx.beginPath();
+		ctx.moveTo(50,50); /* (50,50)에서 시작 */
+		ctx.lineTo(100,50); //선을 그림
+		ctx.lineTo(70,100);
+		ctx.closePath(); //선을 닫음
+		ctx.stroke();
+	}
+</script>
+</head>
+<body>
+	<canvas id="paper" width="300" height="300"></canvas>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#paper{
+		border : 3px solid green;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		var a4 = document.getElementById("paper");
+		var ctx = a4.getContext("2d");
+		ctx.shadowOffsetX = 10.0;
+		ctx.shadowOffsetY = 10.0;
+		ctx.shadowColor = "cyan";
+		ctx.fillStyle = "blue"
+		ctx.shadowBlur = 10; //희미한 정도. 기본값을 0
+		ctx.fillRect(10,10,100,100);
+		}
+</script>
+</head>
+<body>
+<canvas id="paper" width="300" height="300"></canvas>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#paper{
+		border: 3px solid green;
+	}
+</style>
+<script type="text/javascript">
+	function drawRect(){
+		var a4 = document.getElementById("paper");
+		var ctx = a4.getContext("2d");
+		var img = new Image();
+		img.onload = function() {
+			ctx.drawImage(img, 50,50, 50,50, 30,30, 240,240 ); //240, 240 그림의 크기
+		}
+		img.src = "../images/suji.jpg";
+	}
+</script>
+</head>
+<body onload="drawRect()">
+	<canvas id="paper" width="300" height="300"></canvas>
+</body>
+</html>

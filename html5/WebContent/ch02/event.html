@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+	window.onload = function(){ /* 창 뜨자마자 실행 */
+		var video = document.getElementById("video");
+		var play = document.getElementById("play");
+		var pause= document.getElementById("pause");
+		var disp = document.getElementById("disp");
+		play.onclick = function(){
+			video.play();
+		}
+		pause.onclick = function(){
+			video.pause();
+		}
+		video.addEventListener("timeupdate", function() {
+			var time = video.currentTime //현재 재생되는 시간
+			var total = video.duration; //비디오의 총 시간 
+			disp.innerHTML = Math.round(time) + "/" + Math.round(total); /* id가 disp인 곳에다가 html소스로 집어넣음  */
+			//innerHTML : html소스 쓰기 
+		}); /* video에 event추가 */
+			
+		
+		
+	}
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>비디오 제어</h2>
+<div>
+	<video id="video" autoplay="autoplay" controls="controls" >
+		<source src="../images/SANY0103.MP4">
+	</video>
+</div>
+<div>
+	<button id="play">시작</button>
+	<button id="pause">일시정지</button>
+	<span id="disp"></span> <!-- span은 뭐지? -->
+</div>
+</body>
+</html>

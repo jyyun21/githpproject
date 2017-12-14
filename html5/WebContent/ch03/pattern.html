@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#paper{
+		border: 3px solid green;
+	}
+</style>
+<script type="text/javascript">
+	function drawRect(){
+		var a4 = document.getElementById("paper");
+		var ctx = a4.getContext("2d");
+		var img = new Image();
+		img.onload = function(){
+//			var ptn = ctx.createPattern(img, 'repeat'); //img를 반복에서 채워넣어라
+//			var ptn = ctx.createPattern(img, 'repeat-x'); //x축만 반복
+//			var ptn = ctx.createPattern(img, 'repeat-y'); //y축만 반복
+			var ptn = ctx.createPattern(img, 'no-repeat'); //반복 안함
+			ctx.fillStyle = ptn; //생성한 패턴으로 채운다.
+			ctx.fillRect(0,0,300,300);//크기 
+		}
+		img.src = "../images/bul2.gif";
+	}
+</script>
+</head>
+<body onload="drawRect()">
+	<canvas id="paper" width="300" height="300"></canvas>
+</body>
+</html>

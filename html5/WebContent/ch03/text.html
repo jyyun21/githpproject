@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#paper{
+		border: 3px solid green;
+	}
+</style>
+<script type="text/javascript">
+	function drawRect(){
+		var a4 = document.getElementById("paper");
+		var ctx = a4.getContext("2d");
+		ctx.font="30pt Arial";
+		ctx.textAlign="center"; //글자가 중심축의 가운데에서 쓰여짐
+		ctx.fillText("컴공 동지들", 150,100);//중심축
+		ctx.textAlign ="right"; //중심축이 오른쪽에 있게 해라
+		ctx.strokeText("안녕", 300, 200); //300,200이 중심축, 즉 글자가 중심축의 왼쪽에 쓰여짐
+		
+	}
+</script>
+</head>
+<body onload="drawRect()">
+	<canvas id="paper" width="300" height="300"></canvas>
+</body>
+</html>

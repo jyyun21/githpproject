@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML 5 문서 구조 잡기</title>
+<style type="text/css"> /* css를 통해 디자인함 */
+	header{
+		height: 80px; background-color: yellow
+	}
+	nav ul li{ /* nave밑에 ul밑에 있는 li를 옆으로 가게 해라 */
+		float: left; list-style: none; /* 목록(리스트) 앞에 기호 표시 변경 */
+		margin: 15px; /* 간격조정 */
+	}
+	#sidemenu{
+		clear: both; /* nal ul li의 float에 영향을 받지 않게 함 */
+		width: 30%; float:left;background-color: cyan; height: 350px;
+	} 
+	article{
+		width: 70%; float: left; background-color: orange; height: 350px;
+	}
+	figure{float:right;} /* 그림을 오른쪽으로보냄 */
+	footer{
+		clear: both;
+		background: gray;
+	}
+</style>
+</head>
+<body>
+	<header>
+		머리말
+		<nav>
+			<ul>
+				<li>Nav menu 1</li>
+				<li>Nav menu 2</li>
+				<li>Nav menu 3</li>
+			</ul>
+		</nav>
+	</header>
+	<div id="sidemenu">
+		사이드 메뉴
+		<ul>
+			<li>Menu 1</li>
+			<li>Menu 2</li>
+			<li>Menu 3</li>
+		</ul>
+		<aside>보조적인 asdie 내용</aside>
+	</div>
+	<article>
+		<hgroup>
+			<h1>본문이 들어가는 곳입니다.</h1>
+			<h2>훈민정음을 예로 넣었습니다.</h2>
+		</hgroup>
+		<figure>
+			<img src="../images/2014124.jpg" width="241" height="160">
+			<figcaption>그림 설명 들어가는 곳</figcaption>
+		</figure>
+		<p>
+			나랏님(세종) 말씀이, …
+			<mark>한자로는 … 아니하므로</mark>
+			이런 까닭에 … 써서 편안하게 할 따름이니라.
+		</p>
+		<section>섹션이 들어가는 곳</section>
+	</article>
+	<footer> 꼬릿말 </footer>
+</body>
+</html>

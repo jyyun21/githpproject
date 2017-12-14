@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	#paper {border : 3px solid green;}
+</style>
+<script type="text/javascript">
+	function draw(){
+		var a4 = document.getElementById("paper");
+		var ctx = a4.getContext("2d"); //환경설정
+		ctx.fillStyle = "rgb(255,255,0)";  //"#777aaa"; //rgb값 사용가능
+		ctx.fillRect(10,10,200,100) // ( x, y,사각형 밑변, 높이 )
+	}
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body onload="draw()"> <!-- 창 뜨자마자 실행 -->
+<canvas width="300" height="400" id="paper"></canvas> <!-- 도화지 -->
+</body>
+</html>

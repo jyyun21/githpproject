@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var worker;
+	//작업이 오래걸리는 것을 백그라운드에 worker를 만들어 처리하라고 만듬. 
+	//브라우저는 다른 작업을 할 수 있고. worker가 뒤에서 일을하고 처리가 끝나면 결과를 알려줌. 
+	function cal() {
+		if(worker) worker.terminate(); //다른 worker가 돌고있으면 걔를 끝내라. 웹브라우저 뒤에서 돌고있는 아이
+		worker = new Worker("worker.js");
+		var num = document.getElementById("num").value;
+		worker.postMessage(num) ;//worker에 데이터 보내기
+		worker.onmessage = function(event) {
+			alert(num+"까지 합 : "+event.data)
+		};
+	}
+</script>
+</head>
+<body>
+<fieldset>	
+	<legend>숫자입력</legend>
+	<input type="number" id="num"><p>
+	<input type="button" value="계산" onclick="cal()">
+</fieldset>
+</body>
+</html>

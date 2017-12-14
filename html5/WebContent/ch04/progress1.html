@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function pro() {
+		var prog = 0;
+		var bar = document.getElementById("bar");//id로 가져와도 되고 name으로 가져와도 되고. frm.bar.value
+		var timer = setInterval(() => {
+			prog += 10; 
+			bar.value = prog;
+			if(prog==100)
+				clearInterval(timer); //100이 되면 그만해라
+		}, 1000);/* 1000ms , 1초에 한번씩 실행 */
+	
+	}
+
+</script>
+</head>
+<body>
+	<form name="frm"></form>
+	진행 : <progress max="100" value="0" id="bar"></progress> <!-- 초기값은 0 최대값은 100 -->
+	<input type="button" onclick="pro()" value="시작">
+</body>
+</html>

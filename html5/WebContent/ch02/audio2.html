@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+	var audio = new Audio("../images/LoveyDovey.mp3"); /* 음악 파일 추가  */
+	audio.addEventListener("timeupdate", function() {
+		var disp = document.getElementById("disp");
+		disp.innerHTML = audio.currentTime + "/" + audio.duration;
+		audio.volume = 0.5 ; //볼륨 조절
+		audio.loop = true; //부한반복
+	});
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<button onclick="audio.play()">음악듣기</button>
+<div id="disp"></div>
+</body>
+</html>

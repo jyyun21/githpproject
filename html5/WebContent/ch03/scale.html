@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#paper{
+		border: 3px solid green;
+	}
+</style>
+<script type="text/javascript">
+	function drawRect(){
+		var a4 = document.getElementById("paper");
+		var ctx = a4.getContext("2d");
+		ctx.scale(2,2); //캔버스 단위가 2배로됨
+		ctx.fillStyle = "red";
+		ctx.fillRect(0,0,50,50);
+	
+		ctx.scale(0.5,0.5); //2배가 된걸 반으로 나눔. 다시 기본단위로 돌아옴. 앞에서 바꾼 단위가 뒤에까지 영향을 줌 
+		ctx.fillStyle = "green";
+		ctx.fillRect(50,50,50,50);
+	
+		
+	}
+</script>
+</head>
+<body onload="drawRect()">
+	<canvas id="paper" width="300" height="300"></canvas>
+</body>
+</html>
