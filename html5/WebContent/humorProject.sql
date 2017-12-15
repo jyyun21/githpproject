@@ -19,5 +19,7 @@ create table best_table(
 	id varchar2(20),
 	num number 
 );
+update best_table set category = 'humor';
+alter table best_table add (category varchar2(10));
 select * from best_table;
 select count(*) from best_table where id='jyyun21' and num = 5;

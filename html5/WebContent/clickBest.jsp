@@ -11,7 +11,7 @@
 	<c:if test="${select ==0 }">
 		<script type="text/javascript">
 			alert("추천되었습니다.");	
-			location.href='viewBoard.do?num=${num }&pageNum=${pageNum }&check="check"';
+			location.href='viewBoard.do?num=${num }&pageNum=${pageNum }&check="check"&category=${category}';
 		</script>
 	</c:if>
 	<c:if test="${select ==1 }">

@@ -11,7 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 public class BoardDao {
 	private static BoardDao instance = new BoardDao();
-	private BoardDao() {
+	public BoardDao() {
 	}
 	public static BoardDao getInstance() {
 		return instance;
@@ -19,7 +19,6 @@ public class BoardDao {
 	/////////// DB연결부분///////////////////////////
 	private static SqlSession session;
 	private static SqlSession sessionFile;
-	private static SqlSession sessionBest;
 	static { // static 변수 초기화 블럭
 		try {
 			Reader reader = Resources.getResourceAsReader("configuration_board.xml");
@@ -37,14 +36,8 @@ public class BoardDao {
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		//추천 DB
-		try {
-			Reader reader3 = Resources.getResourceAsReader("configuration_best.xml");
-			SqlSessionFactory ssf3 = new SqlSessionFactoryBuilder().build(reader3); // sqlsession을 만든다.
-			sessionBest = ssf3.openSession(true); // 이걸 써줘야 db에서 자동 commit이 된다.
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
+		
+		
 	}
 	/////////////////////////////////////////////
 	public int write(Board board) {
@@ -52,14 +45,19 @@ public class BoardDao {
 		int num = 0;
 		try {
 			num = (int) session.selectOne("getMaxNum");
-			board.setNum(num+1);
-			if(num>0) result = session.insert("write",board);
+			board.setNum(num + 1);
+			if (num > 0)
+				result = session.insert("write", board);
 			int number = board.getNum();
-			sessionFile.update("tempChange",number);
+			sessionFile.update("tempChange", number);
+
 		} catch (Exception e) { System.out.println(e.getMessage());
 		}
 		return result;
 	}
+	
+	
+	////////////////
 	public int getMaxNum() {
 		int num=0;
 		try {

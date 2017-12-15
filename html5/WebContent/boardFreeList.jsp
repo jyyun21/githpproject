@@ -27,7 +27,7 @@
 						<td>${board.num }</td>
 						<td align="left" style="margin-left: 10px;"><a
 							title="${board.content }"
-							href="viewBoard.do?num=${board.num }&pageNum=${pageNum }&category=${board.category}">${board.subject }</a>
+							href="viewBoard.do?num=${board.num }&pageNum=${pageNum }">${board.subject }</a>
 						</td>
 						<td>${board.id }</td>
 						<td>${board.time }</td>
@@ -40,22 +40,22 @@
 		<a href="main.do" style="float: left;">메인으로</a> 
 		<span style="clear: both; text-align: center">
 			<c:if test="${startPage> PAGEPERBLOCK}">
-				<a href="boardList.do?pageNum=${startPage - 1 }&category=${board.category}">[이전]</a>
+				<a href="boardList.do?pageNum=${startPage - 1 }">[이전]</a>
 			</c:if>
 
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
 				<c:if test="${i==currentPage }">
 					<!-- 같은페이지면 색깔은 다르게 -->
-					<a href="boardList.do?pageNum=${i }&category=${board.category}" style="color: pink">[${i }] </a>
+					<a href="boardList.do?pageNum=${i }" style="color: pink">[${i }] </a>
 				</c:if>
 
 				<c:if test="${i!= currentPage }">
-					<a href="boardList.do?pageNum=${i }&category=${board.category}">[${i }] </a>
+					<a href="boardList.do?pageNum=${i }">[${i }] </a>
 				</c:if>
 			</c:forEach>
 
 			<c:if test="${endPage < totPage }">
-				<a href="boardList.do?pageNum=${endPage + 1 }&category=${board.category}">[다음]</a>
+				<a href="boardList.do?pageNum=${endPage + 1 }">[다음]</a>
 				<!-- 지금 endPage 가10이면 다음을 누르면 11페이지를 보여준다 -->
 			</c:if>
 

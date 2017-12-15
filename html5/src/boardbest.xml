@@ -5,14 +5,15 @@
 	<resultMap type="boardbest"	id="ResultMap">
 		<result property="id"		column="id" />
 		<result property="num" 		column="num" />
+		<result property="category" column="category" />
 	</resultMap>
 	<select id="checkIdNum" parameterType="boardbest" resultType="int">
-		select count(*) from best_table where id = #{id} and num= #{num}
+		select count(*) from best_table where id = #{id} and num= #{num} and category = #{category}
 	</select>
 	<select id="getBestNum" parameterType="int" resultType="int">
 		select count(*) from best_table where num=#{num}
 	</select>
 	<insert id="insertBest" parameterType="boardbest">
-		insert into best_table values(#{id}, #{num})
+		insert into best_table values(#{id}, #{num}, #{category})
 	</insert>
 </mapper>

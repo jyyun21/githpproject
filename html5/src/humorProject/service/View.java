@@ -10,6 +10,7 @@ import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFile;
 import humorProject.dao.BoardFileDao;
+import humorProject.dao.BoardFreeDao;
 
 
 
@@ -19,8 +20,16 @@ public class View implements CommandProcess{
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 		int num = Integer.parseInt(request.getParameter("num"));
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
+		String category = request.getParameter("category");
 		String check = request.getParameter("check");
-		BoardDao bd = BoardDao.getInstance();
+		BoardDao bd = null;
+		if(category.equals("free")) {
+			bd = BoardFreeDao.getInstance();
+		}
+		else {
+			bd = BoardDao.getInstance();
+		}
+		
 		if (check == null) {
 			bd.readcount(num); //+1해주기
 		}

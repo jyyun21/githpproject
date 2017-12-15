@@ -13,7 +13,7 @@
 		function del() {
 			var check = confirm("삭제하시겠습니까?");
 			if (check) {
-				location.href = "boardDelete.do?num=${board.num }";
+				location.href = "boardDelete.do?num=${board.num }&category=${board.category }";
 			}
 		}
 	</script>
@@ -37,7 +37,7 @@
 					</c:forEach> 
 				<pre>${board.content }</pre>
 				<span >
-					<button onclick="location.href='clickbest.do?num=${board.num}&pageNum=${pageNum }'">추천
+					<button onclick="location.href='clickbest.do?num=${board.num}&pageNum=${pageNum }&category=${board.category }'">추천
 						<img alt="" src="thumb.PNG" width="20px">
 						</button>
 						&nbsp; &nbsp;
@@ -48,11 +48,11 @@
 				</td>
 		</tr>
 	</table>
-	<a href="boardList.do?pageNum=${pageNum }" style="float: left;">목록</a>
+	<a href="boardList.do?pageNum=${pageNum }&category=${board.category}" style="float: left;">목록</a>
 	<c:if test="${id != null }">
 		<c:if test="${id.equals(board.id) }">
 			<a style="float: right;" onclick="del()">삭제</a>
-			<a href="boardUpdateForm.do?num=${board.num }&pageNum=${pageNum }" style="float: right;">수정
+			<a href="boardUpdateForm.do?num=${board.num }&pageNum=${pageNum }&category=${board.category }" style="float: right;">수정
 				&nbsp;&nbsp;</a>
 		</c:if>
 	</c:if>

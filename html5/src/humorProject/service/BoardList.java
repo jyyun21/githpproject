@@ -6,14 +6,17 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import humorProject.dao.BestTable;
 import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
+import humorProject.dao.BoardFreeDao;
 import humorProject.dao.RowNum;
 
 public class BoardList implements CommandProcess {
 	//모든 페이지를 가져오는것이 아니라 선택한 페이지만 가져오도록 만듬 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+		String category = request.getParameter("category");
 		final int ROWPERPAGE = 10; //한페이지당 보여주는 글의 개수
 		final int PAGEPERBLOCK = 10;//페이지를 표시할 개수 
 		String pageNum = request.getParameter("pageNum"); //pageNum은 현재 페이지
@@ -23,7 +26,13 @@ public class BoardList implements CommandProcess {
 		int currentPage =Integer.parseInt(pageNum); //현재 페이지 1,  2, 3페이지
 		int startRow = (currentPage -1)*ROWPERPAGE +1;// 1~10, 11~20, 21~30
 		int endRow = startRow + ROWPERPAGE -1;
-		BoardDao bd = BoardDao.getInstance();
+		BoardDao bd = null;
+		if(category.equals("free")) {
+			bd = BoardFreeDao.getInstance();
+		}
+		else {
+			bd = BoardDao.getInstance();
+		}
 		int total = bd.total(); //총 글의 개수
 		System.out.println(total);
 		int totPage = (int)Math.ceil((double)total/ROWPERPAGE);//한 페이지당 글을 표시할 수 있는 개수로 나누면 총 페이지개수가 나옴 

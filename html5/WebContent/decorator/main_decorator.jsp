@@ -80,10 +80,10 @@
 <h2 style="margin-left: auto; margin-right: auto; width: 850px"><a href="main.do" style="text-decoration: none;">마지막 유머 Last Humor</a></h2>
 <nav id="topMenu" >
 	 <ul> <li class="topMenuLi"><a class="menuLink" href="#">베스트게시판</a></li>
-	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do">유머게시판</a></li>
-	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do">자유게시판</a>
+	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=humor">유머게시판</a></li>
+	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=free">자유게시판</a>
 	 	  	<ul class="submenu"> 
-	 	  		<li><a href="boardList.do" class="submenuLink">게시판보기</a></li>
+	 	  		<li><a href="boardList.do?category=free" class="submenuLink">게시판보기</a></li>
 	 	  		<li><a href="writeForm.do" class="submenuLink">글쓰기</a></li>
 	 	  		<li><a href="delete.do" class="submenuLink">회원 탈퇴</a></li>
 	 	  		<li><a class="submenuLink">지름게시판</a></li> 

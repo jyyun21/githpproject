@@ -11,6 +11,7 @@
 	<form action="boardUpdate.do">
 	<input type="hidden" name="num" value="${board.num }">
 	<input type="hidden" name="pageNum" value="${pageNum}">
+	<input type="hidden" name="category" value="${board.category}">
 		<table>
 			<tr>
 				<td>제목</td>

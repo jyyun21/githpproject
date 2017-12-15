@@ -39,7 +39,7 @@
 		select * from board where num = #{num}
 	</select>
 	<select id="total" resultType="int">
-		select count(*) from board 
+		select count(*) from board where del ='n'
 	</select>
 	<update id="delete" parameterType="int">
 		update board set del = 'y' where num = #{num}

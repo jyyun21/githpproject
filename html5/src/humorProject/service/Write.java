@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
+import humorProject.dao.BoardFreeDao;
 
 
 
@@ -35,7 +36,13 @@ public class Write implements CommandProcess{
 		board.setCategory(category);
 		board.setContent(content);
 		board.setIp(ip);
-		BoardDao bd = BoardDao.getInstance();
+		BoardDao bd = null;
+		if(board.getCategory().equals("free")) {
+			bd = BoardFreeDao.getInstance();
+		}
+		else {
+			bd = BoardDao.getInstance();
+		}
 		int result = bd.write(board);
 		request.setAttribute("result", result);
 		//request.setAttribute("resultFile", resultFile);
