@@ -50,6 +50,12 @@ create table boardFile (
 	fileSize NUMBER,
 	num number
 );
+alter table boardFile add (category varchar2(20));
+update boardFile set category = 'humor';
 alter table boardFile add constraint fk_file foreign key(num) references board(num);
 select * from boardfile;
+ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
+ALTER TABLE boardFile DROP COLUMN category;
+
+출처: http://jwklife.tistory.com/5 [인 생]
 update boardfile set num=6 where num = 0

@@ -48,5 +48,4 @@ public class Write implements CommandProcess{
 		//request.setAttribute("resultFile", resultFile);
 		return "write.jsp";
 	}
-
 }

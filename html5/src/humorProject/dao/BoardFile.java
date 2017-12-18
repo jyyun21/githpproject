@@ -4,6 +4,7 @@ public class BoardFile {
 	private String fileName ;
 	private int fileSize;
 	private int num ;
+	
 	public String getFileName() {
 		return fileName;
 	}
