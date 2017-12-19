@@ -4,7 +4,14 @@ public class BoardFile {
 	private String fileName ;
 	private int fileSize;
 	private int num ;
+	private String category;
 	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public String getFileName() {
 		return fileName;
 	}

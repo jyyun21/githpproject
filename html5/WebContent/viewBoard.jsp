@@ -31,10 +31,13 @@
 			<td>${board.best}</td>
 		</tr>
 		<tr align="center" valign="top">
-			<td colspan="5"><c:forEach var="file" items="${fileList }">
-					<img alt="" src="upload/${file.fileName }" width="550px">
-					<%-- <video src="upload/${file.fileName }" controls="controls"></video> --%>
+			<td colspan="5">
+				<c:if test="${fileList != null }">
+					<c:forEach var="file" items="${fileList }">
+						<img alt="사진 없어요!" src="upload/${file.fileName }" width="550px">
+						<%-- <video src="upload/${file.fileName }" controls="controls"></video> --%>
 					</c:forEach> 
+				</c:if>
 				<pre>${board.content }</pre>
 				<span >
 					<button onclick="location.href='clickbest.do?num=${board.num}&pageNum=${pageNum }&category=${board.category }'">추천

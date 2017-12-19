@@ -6,14 +6,15 @@
 		<result property="fileName"		column="fileName" />
 		<result property="fileSize"		column="fileSize" />
 		<result property="num" 		column="num" />
+		<result property="category" 		column="category" />
 	</resultMap>
 	<insert id="insertFile" parameterType="boardfile">
-		insert into boardfile values(#{fileName},#{fileSize},#{num})
+		insert into boardfile values(#{fileName},#{fileSize},#{num},#{category})
 	</insert>
 	<update id="tempChange" parameterType="int">
 		update boardfile set num=#{number} where num = 0 
 	</update>
-	<select id="getImage" parameterType="int" resultType="boardfile">
-		select * from boardfile where num = #{num}
+	<select id="getImage" parameterType="boardfile" resultType="boardfile">
+		select * from boardfile where num = #{num} and category = #{category}
 	</select>
 </mapper>

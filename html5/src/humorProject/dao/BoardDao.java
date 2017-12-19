@@ -122,6 +122,15 @@ public class BoardDao {
 		} catch (Exception e) {System.out.println(e.getMessage());
 		}
 	}
+	public int getBestNum(int num) {
+		int result =0;
+		try {
+			//추천 수 구하기
+			result = (int) session.selectOne("getBestNum", num);
+		} catch (Exception e) { System.out.println(e.getMessage());
+		}
+		return result;
+	}
 	
 	
 	

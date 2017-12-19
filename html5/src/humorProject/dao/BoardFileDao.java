@@ -37,11 +37,10 @@ public class BoardFileDao {
 		return result;
 	}
 	/////////////////////////sessionFile
-	public List<BoardFile> getImage(int num) {
+	public List<BoardFile> getImage(BoardFile file) {
 		List<BoardFile> fileList = null;
-		System.out.println(num);
 		try {
-			fileList =  session.selectList("getImage", num); 
+			fileList =  session.selectList("getImage", file); 
 		} catch (Exception e) { System.out.println(e.getMessage());
 		}
 		return fileList;

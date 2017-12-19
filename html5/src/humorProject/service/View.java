@@ -23,20 +23,21 @@ public class View implements CommandProcess{
 		String category = request.getParameter("category");
 		String check = request.getParameter("check");
 		BoardDao bd = null;
-		if(category.equals("free")) {
-			bd = BoardFreeDao.getInstance();
-		}
-		else {
-			bd = BoardDao.getInstance();
-		}
+		
+		if(category.equals("free")) bd = BoardFreeDao.getInstance();
+		else bd = BoardDao.getInstance();
 		
 		if (check == null) {
 			bd.readcount(num); //+1해주기
 		}
 		Board board = bd.select(num); //선택한 num에 맞는 글을 가져와서 거기의 정보를 가져옴 
 		BoardFileDao fd = BoardFileDao.getInstance();
+		BoardFile file = new BoardFile();
 		List<BoardFile> fileList = null;
-		fileList = fd.getImage(num);
+		file.setNum(num);
+		file.setCategory(category);
+		//파일리스트 가져오기
+		fileList = fd.getImage(file); //번호와 category를 세팅한걸 넣어서 만는 이미지 가져오기
 		request.setAttribute("fileList", fileList); //list
 		request.setAttribute("board", board);
 		request.setAttribute("pageNum", pageNum);

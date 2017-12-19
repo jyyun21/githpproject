@@ -27,14 +27,19 @@ public class BoardClickBest implements CommandProcess{
 		else {
 			bd = BoardDao.getInstance();
 		}
+		//추천 테이블에 정보넣기
 		BestTable bestTable = new BestTable();
 		BestTableDao btd = BestTableDao.getInstance();
 		bestTable.setId(id);
 		bestTable.setNum(num);
 		bestTable.setCategory(category);
-		int select = btd.clickBest(bestTable);
+		int select = btd.clickBest(bestTable);//추천테이블에 누가 추천했는지 정보 기입
 		if(select ==0) { //아직 추천을 안했다면
-			bd.bestPlus(num);
+			bd.bestPlus(num); //게시판테이블에도 추천수 plus하기
+			if(bd.getBestNum(num) ==10) {
+				//베스트게시판에 글 쓰기
+				
+			}
 		}
 		request.setAttribute("select", select); //result = 0이면 아직 추천안함. 1이면 추천을 이미했음
 		request.setAttribute("category", category);
