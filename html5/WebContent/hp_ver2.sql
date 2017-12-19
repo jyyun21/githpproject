@@ -42,7 +42,7 @@ create table boardBest (
 	ip varchar2(20),
 	head varchar2(15),
 	category varchar2(10),
-	ref number ,
+	ref number,
 	re_step number ,
 	re_level number 
 );
@@ -50,6 +50,9 @@ CONSTRAINT FK_USERS FOREIGN KEY(USERNO)
 REFERENCES USERS_INFO(USERNO)
 ALTER TABLE 테이블명 ADD CONSTRAINT fk_bbs_id FOREIGN KEY(id) REFERENCES 참조되는 테이블명(id);
 alter table board add constraint fk_board2 foreign key(id) references hpmember(id);
+
+select * from boardBest;
+update boardFree set best =9 where num=2;
 
 drop table board;
 select * from board order by num desc;
@@ -59,6 +62,7 @@ select nvl(max(num),0) from board;
 
 insert into board values(1, 'master', 'temp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
 insert into boardFree values(0, 'master', 'Freetemp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
+insert into boardBest values(0, 'master', 'Besttemp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
 
 
 create table boardFile (

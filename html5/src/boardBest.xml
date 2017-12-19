@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="boardFreens">
-	<resultMap type="boardFree"		id="ResultMap">
+<mapper namespace="boardBestns">
+	<resultMap type="boardBest"		id="ResultMap">
 		<result property="num"		column="num" />
 		<result property="id"		column="id" />
 		<result property="subject" 		column="subject" />
@@ -22,38 +22,38 @@
 		<result property="endRow" 		column="endRow" />
 	</resultMap>
 	
-	<insert id="write" parameterType="boardFree">
-		insert into boardFree values(#{num}, #{id}, #{subject}, #{content}, 0, sysdate, 0, 'n', #{ip}, 
+	<insert id="write" parameterType="boardBest">
+		insert into boardBest values(#{num}, #{id}, #{subject}, #{content}, 0, sysdate, 0, 'n', #{ip}, 
 								'head1', #{category},  0,0,0 )
 	</insert>
 	<select id="getMaxNum" resultType="int">
-		select nvl(max(num),0) from boardFree
+		select nvl(max(num),0) from boardBest
 	</select>
-	<select id="boardList" resultType="boardFree">
-		select * from boardFree order by num desc
+	<select id="boardList" resultType="boardBest">
+		select * from boardBest order by num desc
 	</select>
-	<select id="boardList2" parameterType="boardFree" resultType="boardFree">
-		select * from (select rowNum rn, a.* from ( select * from boardFree where del = 'n' order by num desc ) a ) where rn between ${startRow} and ${endRow}  
+	<select id="boardList2" parameterType="boardBest" resultType="boardBest">
+		select * from (select rowNum rn, a.* from ( select * from boardBest where del = 'n' order by num desc ) a ) where rn between ${startRow} and ${endRow}  
 	</select>
-	<select id="select" parameterType="int" resultType="boardFree">
-		select * from boardFree where num = #{num}
+	<select id="select" parameterType="int" resultType="boardBest">
+		select * from boardBest where num = #{num}
 	</select>
 	<select id="total" resultType="int">
-		select count(*) from boardFree where del ='n'
+		select count(*) from boardBest where del ='n'
 	</select>
 	<update id="delete" parameterType="int">
-		update boardFree set del = 'y' where num = #{num}
+		update boardBest set del = 'y' where num = #{num}
 	</update>
 	<update id="plusReadcount" parameterType="int">
-		update boardFree set readcount = readcount+1 where num = #{num} 
+		update boardBest set readcount = readcount+1 where num = #{num} 
 	</update>
-	<update id="update" parameterType="boardFree">
-		update boardFree set subject = #{subject}, content = #{content} where num = #{num}
+	<update id="update" parameterType="boardBest">
+		update boardBest set subject = #{subject}, content = #{content} where num = #{num}
 	</update>
 	<update id="plusBest" parameterType="int">
-		update boardFree set best = best+1 where num = #{num}
+		update boardBest set best = best+1 where num = #{num}
 	</update>
 	<select id="getBestNum" parameterType="int" resultType="int">
-		select best from boardFree where num = #{num}
+		select best from boardBest where num = #{num}
 	</select>
 </mapper>

@@ -9,14 +9,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<script type="text/javascript">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	//$(function() {
+	//$('#list').load('boardList.do?pageNum=${pageNum }&category=${board.category}');
+	//	$('#list').load('hallo.jsp');
+//	});
+</script>
+<script type="text/javascript">
 		function del() {
 			var check = confirm("삭제하시겠습니까?");
 			if (check) {
 				location.href = "boardDelete.do?num=${board.num }&category=${board.category }";
 			}
 		}
-	</script>
+</script>
+	
 	<table style="width: 600; height: 300">
 		<tr height="10%">
 			<td>제목</td>
@@ -59,5 +67,7 @@
 				&nbsp;&nbsp;</a>
 		</c:if>
 	</c:if>
+	<div id="list">
+	</div>
 </body>
 </html>
