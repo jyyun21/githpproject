@@ -12,12 +12,13 @@ import humorProject.dao.BoardFile;
 import humorProject.dao.BoardFileDao;
 import humorProject.dao.BoardFreeDao;
 
-
-
 public class View implements CommandProcess{
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+		//베스트게시판에서 넘어온건지 확인
+		String best = request.getParameter("best");
+		
 		int num = Integer.parseInt(request.getParameter("num"));
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		String category = request.getParameter("category");
@@ -44,6 +45,7 @@ public class View implements CommandProcess{
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		request.setAttribute("id", id);
+		request.setAttribute("best", best);
 		return "viewBoard.jsp";
 	}
 

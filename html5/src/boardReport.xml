@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardReports">
+	<resultMap type="boardReport"		id="ResultMap">
+		<result property="num"		column="num" />
+		<result property="id"		column="id" />
+		<result property="category"		column="category" />
+		<result property="r_type"		column="r_type" />
+		<result property="r_content"		column="r_content" />
+	</resultMap>
+
+	<insert id="write" parameterType="boardReport">
+		insert into report values(#{num}, #{id}, #{category}, #{r_type}, #{r_content})	
+	</insert>
+	<select id="list" parameterType="boardReport" resultType="boardReport">
+		select * from report where num=#{num} and category = #{category}
+	</select>
+	
+</mapper>

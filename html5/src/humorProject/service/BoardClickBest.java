@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import humorProject.dao.BestTable;
 import humorProject.dao.BestTableDao;
 import humorProject.dao.Board;
+import humorProject.dao.BoardBest;
 import humorProject.dao.BoardBestDao;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
@@ -38,10 +39,14 @@ public class BoardClickBest implements CommandProcess{
 		if(select ==0) { //아직 추천을 안했다면
 			bd.bestPlus(num); //게시판테이블에도 추천수 plus하기
 			if(bd.getBestNum(num) ==10) {
-				//베스트게시판에 글 쓰기
+				//자유, 유머 게시판에 따라 bd가 선택됨 
 				Board board1=bd.select(num);
 				BoardBestDao bestDao = BoardBestDao.getInstance();
-				bestDao.write(board1);
+				BoardBest bb = new BoardBest();
+				bb.setCategory(board1.getCategory());
+				//유머, 자유게시판의 번호를 저장
+				bb.setBoard_num(board1.getNum());
+				bestDao.write(bb);
 				
 			}
 		}

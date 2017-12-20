@@ -46,13 +46,27 @@ create table boardBest (
 	re_step number ,
 	re_level number 
 );
+
+create table board_best(
+	num number ,
+	category varchar2(20)
+);
+create table report(
+	num number,
+	id varchar2(30),
+	category varchar2(20),
+	r_type varchar2(20),
+	r_content varchar2(500)
+);
+
+select * from REPORT;
 CONSTRAINT FK_USERS FOREIGN KEY(USERNO)
 REFERENCES USERS_INFO(USERNO)
 ALTER TABLE 테이블명 ADD CONSTRAINT fk_bbs_id FOREIGN KEY(id) REFERENCES 참조되는 테이블명(id);
 alter table board add constraint fk_board2 foreign key(id) references hpmember(id);
 
-select * from boardBest;
-update boardFree set best =9 where num=2;
+select * from board_best;
+update boardFree set best =9 where num=3;
 
 drop table board;
 select * from board order by num desc;
@@ -63,7 +77,6 @@ select nvl(max(num),0) from board;
 insert into board values(1, 'master', 'temp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
 insert into boardFree values(0, 'master', 'Freetemp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
 insert into boardBest values(0, 'master', 'Besttemp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
-
 
 create table boardFile (
 	fileName varchar2(50) not null,
@@ -82,6 +95,9 @@ alter table boardFile add constraint fk_file foreign key(num) references board(n
 select * from boardfile;
 ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
 ALTER TABLE boardFile DROP COLUMN category;
+alter table board_best add(board_num number);
+
+
 
 출처: http://jwklife.tistory.com/5 [인 생]
 update boardfile set num=6 where num = 0

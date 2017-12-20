@@ -15,6 +15,7 @@ alter table hpmember add (del char(1));
 delete from hpmember where id like 'a%';
 update hpmember set del='n';
 select * from hpmember;
+
 create table best_table(
 	id varchar2(20),
 	num number 

@@ -23,6 +23,13 @@
 				location.href = "boardDelete.do?num=${board.num }&category=${board.category }";
 			}
 		}
+		$(function() {
+			$('#report').click(function() {
+				var url = "boardReportForm.do?num=${board.num }&category=${board.category }&id=${board.id }"
+				window.open(url,"","width =450 height=420"); //새로운창(idChk.jsp)을 띄움 
+			});
+			
+		});
 </script>
 	
 	<table style="width: 600; height: 300">
@@ -52,14 +59,22 @@
 						<img alt="" src="thumb.PNG" width="20px">
 						</button>
 						&nbsp; &nbsp;
-					<button onclick="location.href='report.do'">신고
+					<button id="report">신고
+<%-- 					<button onclick="location.href='boardReportForm.do?num=${board.num }
+							&category=${board.category }&id=${board.id }'">신고 --%>
 						<img alt="" src="singo.PNG" width="20px">
 					</button>
 				</span>
 				</td>
 		</tr>
 	</table>
+	<c:if test="${best ==null }">
 	<a href="boardList.do?pageNum=${pageNum }&category=${board.category}" style="float: left;">목록</a>
+	</c:if>
+	<c:if test="${best!= null }">
+	<a href="boardBestList.do?pageNum=${pageNum }&category=${board.category}" style="float: left;">목록</a>
+	</c:if>
+	
 	<c:if test="${id != null }">
 		<c:if test="${id.equals(board.id) }">
 			<a style="float: right;" onclick="del()">삭제</a>

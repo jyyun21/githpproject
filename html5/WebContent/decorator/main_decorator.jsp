@@ -79,7 +79,7 @@
 <body>
 <h2 style="margin-left: auto; margin-right: auto; width: 850px"><a href="main.do" style="text-decoration: none;">마지막 유머 Last Humor</a></h2>
 <nav id="topMenu" >
-	 <ul> <li class="topMenuLi"><a class="menuLink" href="#">베스트게시판</a></li>
+	 <ul> <li class="topMenuLi"><a class="menuLink" href="boardBestList.do">베스트게시판</a></li>
 	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=humor">유머게시판</a></li>
 	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=free">자유게시판</a>
 	 	  	<ul class="submenu"> 

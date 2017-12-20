@@ -7,5 +7,6 @@
 		<pattern>/fileUploadForm.do?category=free</pattern> <!-- exclude.jsp놈은 보여주지 말아라 -->
 		<pattern>/fileUploadForm.do?category=humor</pattern> <!-- exclude.jsp놈은 보여주지 말아라 -->
 		<pattern>/member/*</pattern>
+		<pattern>/boardReportForm.jsp</pattern>
 	</excludes>
 </decorators>

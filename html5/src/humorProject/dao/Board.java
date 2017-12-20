@@ -21,7 +21,14 @@ public class Board { //DTO에서는 맵핑만 하자 코드는 다른곳에서 �
 	private String time;
 	private int startRow;
 	private int endRow;
+	private int boardBestNum;
 	
+	public int getBoardBestNum() {
+		return boardBestNum;
+	}
+	public void setBoardBestNum(int boardBestNum) {
+		this.boardBestNum = boardBestNum;
+	}
 	public int getStartRow() {
 		return startRow;
 	}

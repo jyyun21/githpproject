@@ -4,56 +4,19 @@
 <mapper namespace="boardBestns">
 	<resultMap type="boardBest"		id="ResultMap">
 		<result property="num"		column="num" />
-		<result property="id"		column="id" />
-		<result property="subject" 		column="subject" />
-		<result property="content" 		column="content" />
-		<result property="readcount" 		column="readcount" />
-		<result property="reg_date" 		column="reg_date" />
-		<result property="best" 		column="best" />
-		<result property="del" 		column="del" />
-		<result property="ip" 		column="ip" />
-		<result property="head" 		column="head" />
-		<result property="category" 		column="category" />
-		<result property="ref" 		column="ref" />
-		<result property="re_step" 		column="re_step" />
-		<result property="re_level" 		column="re_level" />
-		<result property="time" 		column="time" />
-		<result property="startRow" 		column="startRow" />
-		<result property="endRow" 		column="endRow" />
+		<result property="category"		column="category" />
+		<result property="board_num"		column="board_num" />
 	</resultMap>
-	
-	<insert id="write" parameterType="boardBest">
-		insert into boardBest values(#{num}, #{id}, #{subject}, #{content}, 0, sysdate, 0, 'n', #{ip}, 
-								'head1', #{category},  0,0,0 )
-	</insert>
 	<select id="getMaxNum" resultType="int">
-		select nvl(max(num),0) from boardBest
+		select nvl(max(num),0) from board_best
 	</select>
-	<select id="boardList" resultType="boardBest">
-		select * from boardBest order by num desc
-	</select>
-	<select id="boardList2" parameterType="boardBest" resultType="boardBest">
-		select * from (select rowNum rn, a.* from ( select * from boardBest where del = 'n' order by num desc ) a ) where rn between ${startRow} and ${endRow}  
-	</select>
-	<select id="select" parameterType="int" resultType="boardBest">
-		select * from boardBest where num = #{num}
+	<insert id="write" parameterType="boardBest">
+		insert into board_best values(#{num}, #{category}, #{board_num})	
+	</insert>
+	<select id="list" parameterType="boardBest" resultType="boardBest">
+		select * from (select rowNum rn, a.* from ( select * from board_best order by num desc ) a ) where rn between ${startRow} and ${endRow}
 	</select>
 	<select id="total" resultType="int">
-		select count(*) from boardBest where del ='n'
-	</select>
-	<update id="delete" parameterType="int">
-		update boardBest set del = 'y' where num = #{num}
-	</update>
-	<update id="plusReadcount" parameterType="int">
-		update boardBest set readcount = readcount+1 where num = #{num} 
-	</update>
-	<update id="update" parameterType="boardBest">
-		update boardBest set subject = #{subject}, content = #{content} where num = #{num}
-	</update>
-	<update id="plusBest" parameterType="int">
-		update boardBest set best = best+1 where num = #{num}
-	</update>
-	<select id="getBestNum" parameterType="int" resultType="int">
-		select best from boardBest where num = #{num}
+		select count(*) from board_best
 	</select>
 </mapper>
