@@ -35,8 +35,8 @@ public class MemberDao {
 		Member member = null;
 		try {
 			member = (Member)session.selectOne("memberns.select",id);//namespace붙여서 insert빨리찾음//넘어온 member랑 같으면 헷갈리므로 mem으로 명함.
-			if(member == null) result = 0;
-			else result = 1;
+			if(member == null) result = 0;//
+			else result = 1;//이미사용중 다른아이디 사용. id.equals("") 도 넣어야하는디
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

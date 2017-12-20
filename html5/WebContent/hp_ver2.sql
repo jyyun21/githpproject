@@ -45,6 +45,7 @@ insert into board values(1, 'master', 'temp', '파일 임시', 0, sysdate, 0, 'y
 insert into boardFree values(0, 'master', 'Freetemp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
 
 
+
 create table boardFile (
 	fileName varchar2(50) not null,
 	fileSize NUMBER,
@@ -57,5 +58,4 @@ select * from boardfile;
 ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
 ALTER TABLE boardFile DROP COLUMN category;
 
-출처: http://jwklife.tistory.com/5 [인 생]
 update boardfile set num=6 where num = 0
