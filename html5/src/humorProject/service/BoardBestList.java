@@ -12,6 +12,7 @@ import humorProject.dao.BoardBest;
 import humorProject.dao.BoardBestDao;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
+import humorProject.dao.BoardNoticeDao;
 
 public class BoardBestList implements CommandProcess {
 
@@ -70,6 +71,12 @@ public class BoardBestList implements CommandProcess {
 			board1.setTime(old);
 		}
 		
+		BoardNoticeDao bnd = BoardNoticeDao.getInstance();
+		List<Board> noticeList = bnd.getList("best");
+		request.setAttribute("noticeList", noticeList);
+		
+		
+		request.setAttribute("noticeList", noticeList);
 		request.setAttribute("PAGEPERBLOCK", PAGEPERBLOCK);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("currentPage", currentPage);

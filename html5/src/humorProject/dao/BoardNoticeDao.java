@@ -9,12 +9,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class BoardDao {
-	private static BoardDao instance = new BoardDao();
+public class BoardNoticeDao extends BoardDao{
+	private static BoardNoticeDao instance = new BoardNoticeDao();
 
-	public BoardDao() {
+	public BoardNoticeDao() {
 	}
-	public static BoardDao getInstance() {
+	public static BoardNoticeDao getInstance() {
 		return instance;
 	}
 	/////////// DB연결부분///////////////////////////
@@ -22,7 +22,7 @@ public class BoardDao {
 	private static SqlSession sessionFile;
 	static { // static 변수 초기화 블럭
 		try {
-			Reader reader = Resources.getResourceAsReader("configuration_board.xml");
+			Reader reader = Resources.getResourceAsReader("configuration_boardNotice.xml");
 			SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader); // sqlsession을 만든다.
 			session = ssf.openSession(true); // 이걸 써줘야 db에서 자동 commit이 된다.
 		} catch (IOException e) {
@@ -46,9 +46,9 @@ public class BoardDao {
 		int num = 0;
 		try {
 			num = (int) session.selectOne("getMaxNum");
+			System.out.println(num);
 			board.setNum(num + 1);
-			if (num > 0)
-				result = session.insert("write", board);
+			result = session.insert("write", board);
 			int number = board.getNum();
 			sessionFile.update("tempChange", number);
 
@@ -67,7 +67,17 @@ public class BoardDao {
 		return num+1;
 	}
 	
-	public List<Board> getList(Board board) {
+	public List<Board> getList(String category) {
+		List<Board> list = null;
+		try {
+			list = session.selectList("boardList1", category); //return type이 board고 그걸 list에 차곡차곡 넣어줌 
+			//String sql = "select * from (select rowNum rn, a.* from ( select * from board order by num desc ) a ) where rn between ? and ?";
+			//num desc순으로 꺼내고 꺼낸 rowNum에 rn을붙여서 다시 꺼내고 이 rn을 가지고 범위를 정함
+			
+		} catch (Exception e) { System.out.println(e.getMessage());}
+		return list;
+	}
+	public List<Board> getList2(Board board) {
 		List<Board> list = null;
 		try {
 			list = session.selectList("boardList2", board); //return type이 board고 그걸 list에 차곡차곡 넣어줌 

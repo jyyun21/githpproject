@@ -30,7 +30,8 @@ create table boardFree (
 	re_step number ,
 	re_level number 
 );
-create table boardBest (
+
+create table boardNotice (
 	num number primary key,
 	id varchar2(30) ,
 	subject varchar2(50) ,
@@ -41,11 +42,9 @@ create table boardBest (
 	del varchar2(2) default 'n',
 	ip varchar2(20),
 	head varchar2(15),
-	category varchar2(10),
-	ref number,
-	re_step number ,
-	re_level number 
+	category varchar2(10)
 );
+select * from boardNotice;
 
 create table board_best(
 	num number ,

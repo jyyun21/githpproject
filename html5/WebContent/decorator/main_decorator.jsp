@@ -90,7 +90,7 @@
 	 	  	</ul>
 
 		  </li>
-	 	  <li class="topMenuLi"><a class="menuLink" href="#">공지</a></li> 
+	 	  <li class="topMenuLi"><a class="menuLink" href="noticeForm.do">공지</a></li> 
 	 	  <li class="topMenuLi"><a class="menuLink" href="#">마이페이지</a>
 	 	  	<ul class="submenu"> 
 	 	  		<li><a href="view.do" class="submenuLink">회원정보 조회</a></li>

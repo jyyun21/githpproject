@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardNoticeNs">
+	<resultMap type="boardNotice"		id="ResultMap">
+		<result property="num"		column="num" />
+		<result property="id"		column="id" />
+		<result property="subject" 		column="subject" />
+		<result property="content" 		column="content" />
+		<result property="readcount" 		column="readcount" />
+		<result property="reg_date" 		column="reg_date" />
+		<result property="best" 		column="best" />
+		<result property="del" 		column="del" />
+		<result property="ip" 		column="ip" />
+		<result property="head" 		column="head" />
+		<result property="category" 		column="category" />
+		<result property="ref" 		column="ref" />
+		<result property="re_step" 		column="re_step" />
+		<result property="re_level" 		column="re_level" />
+		<result property="time" 		column="time" />
+		<result property="startRow" 		column="startRow" />
+		<result property="endRow" 		column="endRow" />
+	</resultMap>
+	
+	<insert id="write" parameterType="boardNotice">
+		insert into boardNotice values(#{num}, #{id}, #{subject}, #{content}, 0, sysdate, 0, 'n', #{ip}, 
+								'head1', #{category} )
+	</insert>
+	<select id="getMaxNum" resultType="int">
+		select nvl(max(num),0) from boardNotice
+	</select>
+	<select id="boardList1" parameterType="string" resultType="boardNotice">
+		select * from boardNotice where category = #{category} order by num desc
+	</select>
+	<select id="boardList2" parameterType="boardNotice" resultType="boardNotice">
+		select * from (select rowNum rn, a.* from ( select * from boardNotice where del = 'n' order by num desc ) a ) where rn between ${startRow} and ${endRow}  
+	</select>
+	<select id="select" parameterType="int" resultType="boardNotice">
+		select * from boardNotice where num = #{num}
+	</select>
+	<select id="total" resultType="int">
+		select count(*) from boardNotice where del ='n'
+	</select>
+	<update id="delete" parameterType="int">
+		update boardNotice set del = 'y' where num = #{num}
+	</update>
+	<update id="plusReadcount" parameterType="int">
+		update boardNotice set readcount = readcount+1 where num = #{num} 
+	</update>
+	<update id="update" parameterType="boardNotice">
+		update boardNotice set subject = #{subject}, content = #{content} where num = #{num}
+	</update>
+	<update id="plusBest" parameterType="int">
+		update boardNotice set best = best+1 where num = #{num}
+	</update>
+	<select id="getBestNum" parameterType="int" resultType="int">
+		select best from boardNotice where num = #{num}
+	</select>
+</mapper>

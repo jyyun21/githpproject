@@ -25,10 +25,9 @@
 		}
 		$(function() {
 			$('#report').click(function() {
-				var url = "boardReportForm.do?num=${board.num }&category=${board.category }&id=${board.id }"
+				var url = "boardReportForm.do?num=${board.num }&category=${board.category }&id=${board.id }&notice=${notice}"
 				window.open(url,"","width =450 height=420"); //새로운창(idChk.jsp)을 띄움 
 			});
-			
 		});
 </script>
 	
@@ -77,9 +76,14 @@
 	
 	<c:if test="${id != null }">
 		<c:if test="${id.equals(board.id) }">
-			<a style="float: right;" onclick="del()">삭제</a>
-			<a href="boardUpdateForm.do?num=${board.num }&pageNum=${pageNum }&category=${board.category }" style="float: right;">수정
-				&nbsp;&nbsp;</a>
+			<c:if test="${board.best>=10 }">
+				<span style="float : right;">베스트 게시판에 있는 글은 수정 및 삭제가 불가능합니다.</span>
+			</c:if>
+			<c:if test="${board.best<10 }">
+				<a style="float: right;" onclick="del()">삭제</a>
+				<a href="boardUpdateForm.do?num=${board.num }&pageNum=${pageNum }&category=${board.category }" style="float: right;">수정
+					&nbsp;&nbsp;</a>
+			</c:if>
 		</c:if>
 	</c:if>
 	<div id="list">

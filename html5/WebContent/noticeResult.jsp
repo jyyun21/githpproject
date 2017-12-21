@@ -10,8 +10,8 @@
 <body>
 <c:if test="${result >0 }">
 	<script type="text/javascript">
-		alert("작성 성공 메인으로 돌아갑니다. 파일업르드는?");
-		location.href="main.do";
+		alert('성공!');
+		location.href= "main.do";
 	</script>
 </c:if>
 <c:if test="${result <=0 }">

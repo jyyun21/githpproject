@@ -16,7 +16,7 @@ function upload(){
 	window.open(url,"","width =450 height=300"); //새로운창(idChk.jsp)을 띄움 
 }
 </script>
-	<form action="write.do" name="frm">
+	<form action="write.do" name="frm" method="post">
 	<input type="hidden" name="id" value="${member.id }">
 		<table>
 			<caption>글 작성</caption>

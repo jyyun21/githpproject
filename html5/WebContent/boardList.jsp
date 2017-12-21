@@ -4,6 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="common.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -21,6 +26,22 @@
 				<td>조회</td>
 				<td>추천</td>
 			</tr>
+			<c:if test="${noticeList != null }">
+				<c:forEach var="notice" items="${noticeList }">
+					<tr>
+						<td>공지
+						</td>
+						<td align="left" style="margin-left: 10px;"><a
+							title="${notice.content }"
+							href="viewBoard.do?num=${notice.num }
+							&pageNum=${pageNum }&category=${notice.category}&notice='notice'">${notice.subject }</a></td>
+						<td>${notice.id }</td>
+						<td>${notice.reg_date }</td>
+						<td>${notice.readcount }</td>
+						<td>${notice.best }</td>
+					</tr>
+				</c:forEach>
+			</c:if>
 			<c:forEach var="board" items="${list }">
 				<c:if test="${board.del.equals(\"n\") }">
 					<tr>

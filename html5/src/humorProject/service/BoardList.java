@@ -10,6 +10,7 @@ import humorProject.dao.BestTable;
 import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
+import humorProject.dao.BoardNoticeDao;
 import humorProject.dao.RowNum;
 
 public class BoardList implements CommandProcess {
@@ -53,6 +54,11 @@ public class BoardList implements CommandProcess {
 			//if(today.compareTo(board.getReg_date()) <0) board.setTime(news); //today가 무조건 커 1 이 나온다.
 			board1.setTime(old);
 		}
+		//공지사항 리스트
+		BoardNoticeDao bnd = BoardNoticeDao.getInstance();
+		List<Board> noticeList = bnd.getList(category);
+		request.setAttribute("noticeList", noticeList);
+		
 		request.setAttribute("PAGEPERBLOCK", PAGEPERBLOCK);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("currentPage", currentPage);

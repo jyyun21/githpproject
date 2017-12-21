@@ -19,6 +19,21 @@
 				<td>조회</td>
 				<td>추천</td>
 			</tr>
+			<c:if test="${noticeList != null }">
+				<c:forEach var="notice" items="${noticeList }">
+					<tr>
+						<td colspan="2">공지</td>
+						<td align="left" style="margin-left: 10px;"><a
+							title="${notice.content }"
+							href="viewBoard.do?num=${notice.num }
+							&pageNum=${pageNum }&category=${notice.category}&notice='notice'&best='best'">${notice.subject }</a></td>
+						<td>${notice.id }</td>
+						<td>${notice.reg_date }</td>
+						<td>${notice.readcount }</td>
+						<td>${notice.best }</td>
+					</tr>
+				</c:forEach>
+			</c:if>
 			<c:forEach var="board" items="${boardList }">
 				<c:if test="${board.del.equals(\"n\") }">
 					<tr>

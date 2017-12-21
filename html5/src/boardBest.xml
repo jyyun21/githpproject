@@ -6,6 +6,8 @@
 		<result property="num"		column="num" />
 		<result property="category"		column="category" />
 		<result property="board_num"		column="board_num" />
+		<result property="startRow"		column="startRow" />
+		<result property="endRow"		column="endRow" />
 	</resultMap>
 	<select id="getMaxNum" resultType="int">
 		select nvl(max(num),0) from board_best
