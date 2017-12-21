@@ -24,13 +24,13 @@
 	
 	<insert id="write" parameterType="boardNotice">
 		insert into boardNotice values(#{num}, #{id}, #{subject}, #{content}, 0, sysdate, 0, 'n', #{ip}, 
-								'head1', #{category} )
+								#{head}, #{category} )
 	</insert>
 	<select id="getMaxNum" resultType="int">
 		select nvl(max(num),0) from boardNotice
 	</select>
 	<select id="boardList1" parameterType="string" resultType="boardNotice">
-		select * from boardNotice where category = #{category} order by num desc
+		select * from boardNotice where head = #{category} order by num desc
 	</select>
 	<select id="boardList2" parameterType="boardNotice" resultType="boardNotice">
 		select * from (select rowNum rn, a.* from ( select * from boardNotice where del = 'n' order by num desc ) a ) where rn between ${startRow} and ${endRow}  

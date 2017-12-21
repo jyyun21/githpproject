@@ -72,7 +72,7 @@ public class BoardBestList implements CommandProcess {
 		}
 		
 		BoardNoticeDao bnd = BoardNoticeDao.getInstance();
-		List<Board> noticeList = bnd.getList("best");
+		List<Board> noticeList = bnd.getList("best"); //head가 best인것만
 		request.setAttribute("noticeList", noticeList);
 		
 		

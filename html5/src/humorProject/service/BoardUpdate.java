@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
+import humorProject.dao.BoardNoticeDao;
 
 public class BoardUpdate implements CommandProcess{
 
@@ -17,12 +18,10 @@ public class BoardUpdate implements CommandProcess{
 		int num = Integer.parseInt(request.getParameter("num"));
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		BoardDao bd = null;
-		if(category.equals("free")) {
-			bd = BoardFreeDao.getInstance();
-		}
-		else {
-			bd = BoardDao.getInstance();
-		}
+		if(category.equals("free")) bd = BoardFreeDao.getInstance();
+		else if(category.equals("notice")) bd = BoardNoticeDao.getInstance();
+		else	bd = BoardDao.getInstance();
+		
 		Board board= bd.select(num); //선택한 보드를 가져옴
 		board.setSubject(subject);
 		board.setContent(content);

@@ -14,15 +14,16 @@ public class Notice implements CommandProcess{
 		HttpSession session = (HttpSession) request.getAttribute("id");
 		String subject = request.getParameter("subject");
 		String  id= request.getParameter("id");
-		String  category= request.getParameter("category");
+		String  head= request.getParameter("head");
 		String  content= request.getParameter("content");
 		String ip = request.getRemoteAddr();
 		Board board = new Board();
 		board.setSubject(subject);
 		board.setId(id);
-		board.setCategory(category);
+		board.setCategory("notice");
 		board.setContent(content);
 		board.setIp(ip);
+		board.setHead(head);
 		BoardNoticeDao bnb = BoardNoticeDao.getInstance();
 		int result = bnb.write(board);
 		request.setAttribute("result", result);

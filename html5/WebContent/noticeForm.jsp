@@ -23,7 +23,7 @@
 			<tr>
 				<td>공지 카테고리</td>
 				<!-- 				<td><input type="text" value="humor" name="category"></td> -->
-				<td><select name="category">
+				<td><select name="head">
 						<option value="humor">유머</option>
 						<option value="free">자유</option>
 						<option value="best">베스트</option>

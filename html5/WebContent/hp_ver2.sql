@@ -50,6 +50,7 @@ create table board_best(
 	num number ,
 	category varchar2(20)
 );
+select * from board_best;
 create table report(
 	num number,
 	id varchar2(30),
@@ -64,10 +65,8 @@ REFERENCES USERS_INFO(USERNO)
 ALTER TABLE 테이블명 ADD CONSTRAINT fk_bbs_id FOREIGN KEY(id) REFERENCES 참조되는 테이블명(id);
 alter table board add constraint fk_board2 foreign key(id) references hpmember(id);
 
-select * from board_best;
 update boardFree set best =9 where num=3;
 
-drop table board;
 select * from board order by num desc;
 select * from boardFree order by num desc;
 select * from member2;
@@ -99,4 +98,7 @@ alter table board_best add(board_num number);
 
 
 출처: http://jwklife.tistory.com/5 [인 생]
-update boardfile set num=6 where num = 0
+
+update boardfile set num=6 where num = 0;
+
+update board set del='y' where num = 27;

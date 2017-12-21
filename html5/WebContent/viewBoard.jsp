@@ -67,11 +67,12 @@
 				</td>
 		</tr>
 	</table>
+	<!-- notice는 category가 notice니까 head를 통해 list를 판별하자 그래서 head를 보내줌 -->
 	<c:if test="${best ==null }">
-	<a href="boardList.do?pageNum=${pageNum }&category=${board.category}" style="float: left;">목록</a>
+	<a href="boardList.do?pageNum=${pageNum }&category=${board.category}&head=${board.head}" style="float: left;">목록</a>
 	</c:if>
 	<c:if test="${best!= null }">
-	<a href="boardBestList.do?pageNum=${pageNum }&category=${board.category}" style="float: left;">목록</a>
+	<a href="boardBestList.do?pageNum=${pageNum }&category=${board.category}&head=${board.head}" style="float: left;">목록</a>
 	</c:if>
 	
 	<c:if test="${id != null }">

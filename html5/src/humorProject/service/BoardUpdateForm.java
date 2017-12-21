@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
+import humorProject.dao.BoardNoticeDao;
 
 public class BoardUpdateForm implements CommandProcess{
 
@@ -18,6 +19,7 @@ public class BoardUpdateForm implements CommandProcess{
 		if(category.equals("free")) {
 			bd = BoardFreeDao.getInstance();
 		}
+		else if(category.equals("notice")) bd = BoardNoticeDao.getInstance();
 		else {
 			bd = BoardDao.getInstance();
 		}

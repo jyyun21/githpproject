@@ -19,7 +19,7 @@ public class View implements CommandProcess{
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 		//베스트게시판에서 넘어온건지 확인
 		String best = request.getParameter("best");
-		String notice = request.getParameter("notice");
+	//	String notice = request.getParameter("notice");
 		
 		
 		int num = Integer.parseInt(request.getParameter("num"));
@@ -29,7 +29,7 @@ public class View implements CommandProcess{
 		BoardDao bd = null;
 		//공지글 인지 확인
 		//일반 게시판 글
-		if(notice != null) bd = BoardNoticeDao.getInstance();
+		if(category.equals("notice")) bd = BoardNoticeDao.getInstance();
 		else if(category.equals("free")) bd = BoardFreeDao.getInstance();
 		else bd = BoardDao.getInstance();
 		
@@ -52,7 +52,7 @@ public class View implements CommandProcess{
 		String id = (String) session.getAttribute("id");
 		request.setAttribute("id", id);
 		request.setAttribute("best", best);
-		request.setAttribute("notice", notice);
+		//request.setAttribute("notice", notice);
 		return "viewBoard.jsp";
 	}
 

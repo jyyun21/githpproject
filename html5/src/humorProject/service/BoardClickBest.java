@@ -11,6 +11,7 @@ import humorProject.dao.BoardBest;
 import humorProject.dao.BoardBestDao;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
+import humorProject.dao.BoardNoticeDao;
 
 public class BoardClickBest implements CommandProcess{
 
@@ -26,6 +27,7 @@ public class BoardClickBest implements CommandProcess{
 		if(category.equals("free")) {
 			bd = BoardFreeDao.getInstance();
 		}
+		else if(category.equals("notice")) bd = BoardNoticeDao.getInstance();
 		else {
 			bd = BoardDao.getInstance();
 		}

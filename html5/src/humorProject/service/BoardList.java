@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Header1_1Impl;
+
 import humorProject.dao.BestTable;
 import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
@@ -18,6 +20,8 @@ public class BoardList implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 		String category = request.getParameter("category");
+		String head= request.getParameter("head");
+		
 		final int ROWPERPAGE = 10; //한페이지당 보여주는 글의 개수
 		final int PAGEPERBLOCK = 10;//페이지를 표시할 개수 
 		String pageNum = request.getParameter("pageNum"); //pageNum은 현재 페이지
@@ -28,7 +32,12 @@ public class BoardList implements CommandProcess {
 		int startRow = (currentPage -1)*ROWPERPAGE +1;// 1~10, 11~20, 21~30
 		int endRow = startRow + ROWPERPAGE -1;
 		BoardDao bd = null;
-		if(category.equals("free")) {
+		//notice글을 볼때의 category를 humor, free로 변경하자
+		if(head !=null ) {
+			if(category.equals("notice")) category=head;
+		}
+		
+		 if(category.equals("free")) {
 			bd = BoardFreeDao.getInstance();
 		}
 		else {
@@ -56,7 +65,7 @@ public class BoardList implements CommandProcess {
 		}
 		//공지사항 리스트
 		BoardNoticeDao bnd = BoardNoticeDao.getInstance();
-		List<Board> noticeList = bnd.getList(category);
+		List<Board> noticeList = bnd.getList(category); //notice는 head가 category
 		request.setAttribute("noticeList", noticeList);
 		
 		request.setAttribute("PAGEPERBLOCK", PAGEPERBLOCK);
@@ -70,6 +79,7 @@ public class BoardList implements CommandProcess {
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("ROWPERPAGE", ROWPERPAGE);
 		request.setAttribute("list", list);
+		request.setAttribute("category", category);
 		
 		return "boardList.jsp";
 	}
