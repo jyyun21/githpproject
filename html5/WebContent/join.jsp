@@ -10,13 +10,13 @@
 <body>
 <c:if test="${result>0 }">
 	<script type="text/javascript">
-		alert("회원가입 성공");
+		alert("회원가입에 성공하였습니다.");
 		location.href = "loginForm.do";
 	</script>
 </c:if>
 <c:if test="${result==0 }">
 	<script type="text/javascript">
-		alert("에효! 똑바로해~");
+		alert("회원가입에 실패하였습니다.");
 		history.go(-1);
 	</script>
 </c:if>

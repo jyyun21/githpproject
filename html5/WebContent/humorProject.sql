@@ -1,12 +1,17 @@
 create table hpmember(
-	id varchar2(12) primary key,
-	password varchar2(12) not null,
+	id varchar2(20) primary key,
+	password varchar2(20) not null,
 	name varchar2(20) not null,
 	address varchar2(50),
 	tel varchar2(20) not null,
 	reg_date date,
 	del char(1)
 );
+
+
+
+
+
 alter table hpmember add(del char(1));
 update hpmember set del ='n';
 select * from HPMEMBER;
@@ -24,3 +29,5 @@ select * from best_table;
 update best_table set category = 'humor';
 alter table best_table add (category varchar2(10));
 select count(*) from best_table where id='jyyun21' and num = 5;
+
+

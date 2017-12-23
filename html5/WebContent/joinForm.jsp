@@ -113,7 +113,7 @@ function chk(){
 						<input type="text" class="form-control" placeholder="전화번호(000-0000-0000)" pattern="\d{3}-\d{3,4}-\d{4}" 
 						name="tel" maxlength="20" required="required">
 					</div>
-					<button type="submit" class="btn btn-primary form-control">로그인</button>
+					<button type="submit" class="btn btn-primary form-control">회원 가입</button>
 				</form>
 			</div>
 		</div>
