@@ -1,84 +1,93 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%-- <%@ include file="sessionChk.jsp" %> --%>
-<!DOCTYPE html >
+
+
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>유머프로젝트-hp-</title>
-<link rel="stylesheet" type="text/css" href="common.css">
-<style type="text/css">
- #topMenu {
-            height: 30px;  /* 메인 메뉴의 높이 */
-            width: 850px;  /* 메인 메뉴의 넓이 */
-    }
-    #topMenu ul {           /* 메인 메뉴 안의 ul을 설정함: 상위메뉴의 ul+하위 메뉴의 ul */
-        list-style-type: none;  /* 메인 메뉴 안의 ul 내부의 목록 표시를 없애줌 */
-        margin: 0px;            /* 메인 메뉴 안의 ul의 margin을 없앰 */
-        padding: 0px;           /* 메인 메뉴 안의 ul의 padding을 없앰 */
-    }
-    #topMenu ul li {            /* 메인 메뉴 안에 ul 태그 안에 있는 li 태그의 스타일 적용(상위/하위메뉴 모두) */
-        color: white;               /* 글씨 색을 흰색으로 설정 */
-        background-color: #2d2d2d;  /* 배경 색을 RGB(2D2D2D)로 설정 */
-        float: left;                /* 왼쪽으로 나열되도록 설정 */
-        line-height: 30px;          /* 텍스트 한 줄의 높이를 30px로 설정 */
-        vertical-align: middle;     /* 세로 정렬을 가운데로 설정 */
-        text-align: center;         /* 텍스트를 가운데로 정렬 */
-        position: relative;         /* 해당 li 태그 내부의 top/left 포지션 초기화 */
-    }
-    .menuLink, .submenuLink {           /* 상위 메뉴와 하위 메뉴의 a 태그에 공통으로 설정할 스타일 */
-        text-decoration:none;               /* a 태그의 꾸밈 효과 제거 */
-        display: block;                     /* a 태그의 클릭 범위를 넓힘 */
-        width: 150px;                       /* 기본 넓이를 150px로 설정 */
-        font-size: 12px;                    /* 폰트 사이즈를 12px로 설정 */
-        font-weight: bold;                  /* 폰트를 굵게 설정 */
-        font-family: "Trebuchet MS", Dotum; /* 기본 폰트를 영어/한글 순서대로 설정 */
-    }
-    .menuLink {     /* 상위 메뉴의 글씨색을 흰색으로 설정 */
-        color: white;
-    }
-    .menuLink {color: white !important;}
-
-    .topMenuLi:hover .menuLink {    /* 상위 메뉴의 li에 마우스오버 되었을 때 스타일 설정 */
-        color: red;                 /* 글씨 색 빨간색 */
-        background-color: #4d4d4d;  /* 배경색을 밝은 회색으로 설정 */
-    }
-    .submenuLink {          /* 하위 메뉴의 a 태그 스타일 설정 */
-        color: #2d2d2d;             /* 글씨 색을 RGB(2D2D2D)로 설정 */
-        background-color: white;    /* 배경색을 흰색으로 설정 */
-        border: solid 1px black;    /* 테두리를 설정 */
-        margin-top: -1px;           /* 위 칸의 하단 테두리와 아래칸의 상단 테두리가 겹쳐지도록 설덩 */
-    }
-    .longLink {     /* 좀 더 긴 메뉴 스타일 설정 */
-        width: 190px;   /* 넓이는 190px로 설정 */
-    }
-    .submenu {              /* 하위 메뉴 스타일 설정 */
-        position: absolute;     /* html의 flow에 영향을 미치지 않게 absolute 설정 */
-        height: 0px;            /* 초기 높이는 0px로 설정 */
-        overflow: hidden;       /* 실 내용이 높이보다 커지면 해당 내용 감춤 */
-        transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(기본) */
-        -webkit-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 크롬/사파라ㅣ) */
-        -moz-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 파폭) */
-        -o-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 오페라) */
-    }
-    .topMenuLi:hover .submenu { /* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */
-        height: 93px;           /* 높이를 93px로 설정 */
-    }
-    .submenuLink:hover {        /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */
-        color: red;                 /* 글씨색을 빨간색으로 설정 */
-        background-color: #dddddd;  /* 배경을 RGB(DDDDDD)로 설정 */
-    }
-
-</style>
-<!--[if lt IE 9]> 
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> 
-<![endif]-->
-
+<meta name="viewport" content="width=device-width" , initial-scale="1">
+<title>마지막유머~마유~</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-<h2 style="text-align: left;">${member==null ? '손' : member.name}님 반갑습니다.</h2>
-
-
-
+	
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="main.jsp">마지막유머</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="main.jsp">메인</a></li>
+					<li><a href="bbs.jsp">베스트게시판</a></li>
+					<li><a href="bbs.jsp">유머게시판</a></li>
+					<li><a href="bbs.jsp">자유게시판</a></li>
+					<li><a href="bbs.jsp">공지게시판</a></li>
+					<h2 style="text-align: left;">${member==null ? '손' : member.name}님 반갑습니다.</h2>
+				</ul>
+				
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">접속하기<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="login.jsp">로그인</a></li>
+							<li><a href="join.jsp">회원가입</a></li>
+						</ul>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>웹 사이트 소개</h1>
+				<p>이 웹 사이트는 부트스트랩으로 만든 JSP 웹 사이트입니다. 최소한의 간단한 로직만을 이용해서 개발했습니다. 디자인 템플릿으로는 부트스트랩을 이용했습니다.</p>
+				<p><a class="btn btn-primary btn-pull" href="#" role="button">자세히 알아보기 &raquo;</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<div class="item active">
+					<img src="images/1.jpg">
+				</div>
+				<div class="item">
+					<img src="images/2.jpg">
+				</div>
+				<div class="item">
+					<img src="images/3.jpg">
+				</div>
+			</div>
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>	
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
 </body>
 </html>
