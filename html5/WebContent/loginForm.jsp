@@ -28,10 +28,9 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="main.jsp">메인</a></li>
-					<li><a href="bbs.jsp">베스트게시판</a></li>
-					<li><a href="bbs.jsp">유머게시판</a></li>
-					<li><a href="bbs.jsp">자유게시판</a></li>
-					<li><a href="bbs.jsp">공지게시판</a></li>
+					<li><a href="boardBestList.jsp">베스트게시판</a></li>
+					<li><a href="boardList.jsp">유머게시판</a></li>
+					<li><a href="boardFreeList.jsp">자유게시판</a></li>
 					<h2 style="text-align: left;">${member==null ? '손' : member.name}님 반갑습니다.</h2>
 				</ul>
 				
