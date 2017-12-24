@@ -118,7 +118,7 @@ function chk(){
 		</div>
 		<div class="col-lg-4"></div>
 	</div>
-	>
+	
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>
