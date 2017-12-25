@@ -56,51 +56,17 @@
 		</div>
 	</nav>
 <!-- view: 회원정보 조회 페이지----------------------------------------------------->
-<%-- <table><caption>회원정보</caption>
-	<tr><th>아이디</th><td>${member.id }</td></tr>
-	<tr><th>닉네임</th><td>${member.name }</td></tr>
-	<tr><th>이메일</th><td>${member.address }</td></tr>
-	<tr><th>전화</th><td>${member.tel }</td></tr>
-	<tr><th>등록일</th><td>${member.reg_date }</td></tr>
-</table> --%>
 
-	<div class="container">
-		<div class="col-lg-4"></div>
-		<div class="col-lg-4">
-			<div class="jumbotron" style="padding-top: 20px;">
-				<form method="post" action="join.do">
-					<h3 style="text-align: center;">회원정보</h3>
-					<!-- <div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디" readonly="readonly">
-					</div> -->
+
+
+					<table><caption>회원정보</caption>
+						<tr><th>아이디</th><td>${member.id }</td></tr>
+						<tr><th>닉네임</th><td>${member.name }</td></tr>
+						<tr><th>이메일</th><td>${member.address }</td></tr>
+						<tr><th>전화</th><td>${member.tel }</td></tr>
+						<tr><th>등록일</th><td>${member.reg_date }</td></tr>
+					</table>
 					
-					<span class="form-group">아이디 자리</span>
-					<span class="form-group">${member.id }</span>
-					<!-- <div class="form-group">
-						<input type="text" class="form-control" placeholder="아이디" name="id" maxlength="20" required="required">
-					</div> 아이디 확인버튼 만들기-->
-	 				<div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호" name="password" maxlength="20" required="required">
-					</div>
-					<!-- <div class="form-group">
-						<input type="password" class="form-control" placeholder="비밀번호 확인" name="password2" maxlength="20" required="required">
-					</div> 비밀번호 확인 만들기-->
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="닉네임" name="name" maxlength="20" required="required">
-					</div>
-					<div class="form-group">
-						<input type="email" class="form-control" placeholder="이메일" name="address" maxlength="50" required="required">
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="전화번호(000-0000-0000)" pattern="\d{3}-\d{3,4}-\d{4}" 
-						name="tel" maxlength="20" required="required">
-					</div>
-					<button type="submit" class="btn btn-primary form-control">회원 가입</button>
-				</form>
-			</div>
-		</div>
-		<div class="col-lg-4"></div>
-	</div>
 
 
 <a href="main.do">메인</a>
