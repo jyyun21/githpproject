@@ -1,15 +1,9 @@
-/*td { padding: 10px; border: 1px solid #F06060; font-size: 11pt;  }
-th { padding: 10px; border: 1px solid #F06060; font-size: 11pt ; background-color: #BF1011; }
 
-caption { font-size: 30px; font-weight: bold; 
-	line-height: 150%;  }
-table { background-color: #8C0803;  border: 1px solid #F3B562; widows: 50%;
-	align-content: center; align-items: center; margin-right: auto; margin-left: auto;    }
- td:hover{ handover : td위에 마우스를 올리면 td색깔 변경
-	background-color:yellow; color : white ; cursor: pointer;
-}
-body { background-color: #014014;   color: #EFEADD; font-family: "SeoulHangang"; font-size: 11pt ;
-	text-align: center; overflow: hidden;} */
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');/* 웹폰트 설정 */
+@import url('http://fonts.googleapis.com/earlyaccess/hanna.css');
+h2{font-family: 'hanna';}
+body, table, div, p {font-family:'Nanum Gothic';}
+	
 a:link {text-decoration: none; color: black; }
 a:visited {text-decoration: none; color: black;}
 a:active {text-decoration: none; color: black;}

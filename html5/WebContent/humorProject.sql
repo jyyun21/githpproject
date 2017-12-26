@@ -10,7 +10,7 @@ create table hpmember(
 alter table hpmember add(del char(1));
 update hpmember set del ='n';
 select * from HPMEMBER;
-update hpmember set del = 'n' where id = 'jyyun21';
+update hpmember set del = 'n' where id = 'master';
 alter table hpmember add (del char(1));
 delete from hpmember where id like 'a%';
 update hpmember set del='n';

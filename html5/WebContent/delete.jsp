@@ -10,13 +10,19 @@
 <body>
 <c:if test="${result>0 }">
 	<script type="text/javascript">
-		alert("탈퇴! 잘되나 보자");
+		alert("탈퇴 되었습니다. 이용해주셔서 감사합니다.");
 		location.href = "loginForm.do";
 	</script>
 </c:if>
 <c:if test="${result==0 }">
 	<script type="text/javascript">
-		alert("헐! 안되네");
+		alert("탈퇴에  실패하였습니다.");
+		history.go(-1);
+	</script>
+</c:if>
+<c:if test="${result==-1 }">
+	<script type="text/javascript">
+		alert("패스워드가 일치하지 않습니다.");
 		history.go(-1);
 	</script>
 </c:if>
