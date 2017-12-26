@@ -13,7 +13,7 @@ function idChk(){
 	if(!frm.id.value){alert("id입력후에 체크하세요");
 	frm.id.focus(); return false;
 	}
-	var url = "idChk.do?id="+frm.id.value; 
+	var url = "../member/idChk.do?id="+frm.id.value; 
 	window.open(url, "", "width=500 height=300");
 }
 function chk(){

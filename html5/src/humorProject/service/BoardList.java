@@ -67,6 +67,13 @@ public class BoardList implements CommandProcess {
 		BoardNoticeDao bnd = BoardNoticeDao.getInstance();
 		List<Board> noticeList = bnd.getList(category); //notice는 head가 category
 		request.setAttribute("noticeList", noticeList);
+		for(Board board1: noticeList) {
+			SimpleDateFormat sdf2 = new SimpleDateFormat("yy-MM-dd");// HH:mm:ss
+			String old = sdf2.format(board1.getReg_date());
+			//if(today.compareTo(board.getReg_date()) <0) board.setTime(news); //today가 무조건 커 1 이 나온다.
+			board1.setTime(old);
+		}
+		
 		
 		request.setAttribute("PAGEPERBLOCK", PAGEPERBLOCK);
 		request.setAttribute("pageNum", pageNum);

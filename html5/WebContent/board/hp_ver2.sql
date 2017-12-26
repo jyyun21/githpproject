@@ -64,7 +64,7 @@ CONSTRAINT FK_USERS FOREIGN KEY(USERNO)
 REFERENCES USERS_INFO(USERNO)
 ALTER TABLE 테이블명 ADD CONSTRAINT fk_bbs_id FOREIGN KEY(id) REFERENCES 참조되는 테이블명(id);
 alter table board add constraint fk_board2 foreign key(id) references hpmember(id);
-
+alter table board drop constraint FK_BOARD;
 update boardFree set best =9 where num=3;
 
 select * from board order by num desc;

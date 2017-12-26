@@ -20,5 +20,11 @@
 		history.go(-1);
 	</script>
 </c:if>
+<!-- viewBoard에서 ../boardReportForm.do를 통해 webcontent밑에서 부른다.
+viewBoard -> ../boardReportForm.do ->board/boardReportForm.jsp -> board/boardReport.do -> boardReport.jsp(webcontent밑에있다.)
+
+
+
+  -->
 </body>
 </html>

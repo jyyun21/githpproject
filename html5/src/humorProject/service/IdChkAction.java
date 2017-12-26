@@ -13,7 +13,7 @@ public class IdChkAction implements CommandProcess {
 		MemberDao md = MemberDao.getInstance();
 		int result = md.idChk(id);
 		request.setAttribute("result", result);
-		return "member/idChk.jsp";
+		return "idChk.jsp";
 	}
 
 }

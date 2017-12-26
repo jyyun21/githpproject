@@ -16,7 +16,7 @@ public class BoardReportForm implements CommandProcess {
 		request.setAttribute("id", id);
 		request.setAttribute("num", num);
 		request.setAttribute("category", category);
-		return "boardReportForm.jsp";
+		return "board/boardReportForm.jsp";
 	}
 
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ include file="sessionChk.jsp" %>
+	<%@ include file="board/sessionChk.jsp" %>
 <!DOCTYPE >
 <html>
 <head>
@@ -43,7 +43,7 @@
 				<textarea rows="10" cols="30" id="r_content" name="r_content" placeholder="자세한 내용을 적어주세요."></textarea>
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-info" onclick="location.href='boardReport.do'" id="chk" >신고하기</button>
+				<button type="submit" class="btn btn-info" onclick="location.href='board/boardReport.do'" id="chk" >신고하기</button>
 			</div>
 		</form>
 		<div id="result"></div>

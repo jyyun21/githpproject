@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
 	//$(function() {
 	//$('#list').load('boardList.do?pageNum=${pageNum }&category=${board.category}');
@@ -25,7 +25,7 @@
 		}
 		$(function() {
 			$('#report').click(function() {
-				var url = "boardReportForm.do?num=${board.num }&category=${board.category }&id=${board.id }&notice=${notice}"
+				var url = "../boardReportForm.do?num=${board.num }&category=${board.category }&id=${board.id }&notice=${notice}"
 				window.open(url,"","width =450 height=420"); //새로운창(idChk.jsp)을 띄움 
 			});
 		});

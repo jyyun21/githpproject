@@ -36,7 +36,7 @@
 							href="viewBoard.do?num=${notice.num }
 							&pageNum=${pageNum }&category=${notice.category}&notice='notice'">${notice.subject }</a></td>
 						<td>${notice.id }</td>
-						<td>${notice.reg_date }</td>
+						<td>${notice.time }</td>
 						<td>${notice.readcount }</td>
 						<td>${notice.best }</td>
 					</tr>
