@@ -195,7 +195,7 @@
                 <a href="#" id="btn_topmenu_control_panel"></a>
             </div>
             <div id="logo_line_search_div">
-                <form action="#" method="get" name="up_search" id="search" onsubmit="return up_search_check();">
+                <form action="#" method="get" name="up_search" id="search" onsubmit="#">
                     <input type="hidden" name="kind" value="search">
                     <select name="keyfield">
                         <option value="subject" selected="">제목</option>
