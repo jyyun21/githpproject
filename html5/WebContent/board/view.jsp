@@ -12,8 +12,8 @@
 <body>
 <table><caption>회원정보</caption>
 	<tr><th>아이디</th><td>${member.id }</td></tr>
-	<tr><th>이름</th><td>${member.name }</td></tr>
-	<tr><th>주소</th><td>${member.address }</td></tr>
+	<tr><th>닉네임</th><td>${member.name }</td></tr>
+	<tr><th>이메일</th><td>${member.address }</td></tr>
 	<tr><th>전화</th><td>${member.tel }</td></tr>
 	<tr><th>등록일</th><td>${member.reg_date }</td></tr>
 </table>

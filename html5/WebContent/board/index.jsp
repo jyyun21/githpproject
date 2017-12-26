@@ -9,7 +9,7 @@
 <body>
 <script type="text/javascript">
 	location.href = "main.do";
-	안녕안녕
+	
 </script>
 </body>
 </html>

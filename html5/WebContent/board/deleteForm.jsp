@@ -13,7 +13,7 @@
 	<input type="hidden" name="id" value="${member.id }">
 	<table><caption>회원 탈퇴 확인</caption>
 		<tr><th>아이디</th><td>${member.id }</td></tr>
-		<tr><th>암호</th><td><input type="password" name="password" required="required" ></td></tr>
+		<tr><th>비밀번호</th><td><input type="password" name="password" required="required" ></td></tr>
 		
 		
 		<tr><th colspan="2"><input type="submit"  value="확인" ></th></tr>

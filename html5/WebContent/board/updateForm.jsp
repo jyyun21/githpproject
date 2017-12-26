@@ -22,10 +22,10 @@
 	<input type="hidden" name="id" value="${member.id }">
 	<table><caption>회원정보 수정</caption>
 		<tr><th>아이디</th><td>${member.id }</td></tr>
-		<tr><th>새로운 암호</th><td><input type="password" name="password" required="required" ></td></tr>
-		<tr><th>새로운 암호확인</th><td><input type="password" name="password2" required="required"></td></tr>
-		<tr><th>이름</th><td><input type="text" name="name" value="${member.name }" required="required"></td></tr>
-		<tr><th>주소</th><td><input type="text" name="address" value="${member.address }" required="required"></td></tr>
+		<tr><th>새로운 비밀번호</th><td><input type="password" name="password" required="required" ></td></tr>
+		<tr><th>비밀번호 확인</th><td><input type="password" name="password2" required="required"></td></tr>
+		<tr><th>닉네임</th><td><input type="text" name="name" value="${member.name }" required="required"></td></tr>
+		<tr><th>이메일</th><td><input type="email" name="address" value="${member.address }" required="required"></td></tr>
 		<tr><th>전화번호</th><td><input type="tel" name="tel" value="${member.tel }" required="required"
 								 pattern="\d{3}-\d{3,4}-\d{4}" placeholder="xxx-xxxx-xxxx"></td></tr>
 		<tr><th colspan="2"><input type="submit"  value="확인" ></th></tr>

@@ -29,14 +29,14 @@ function chk(){
 	}
 }
 </script>
-<form action="join.do" name="frm" onsubmit="return chk()">
+<form action="join.do" name="frm" onsubmit="return chk()" >
 	<table><caption>회원 가입</caption>
-		<tr><th>아이디</th><td><input type="text" name="id" required="required" autofocus="autofocus">
-				<input type="button" value="중복확인" onclick="idChk()"></td></tr>
-		<tr><th>암호</th><td><input type="password" name="password" required="required"></td></tr>
-		<tr><th>암호확인</th><td><input type="password" name="password2" required="required"></td></tr>
-		<tr><th>이름</th><td><input type="text" name="name" required="required"></td></tr>
-		<tr><th>주소</th><td><input type="text" name="address" required="required"></td></tr>
+		<tr><th>아이디</th><td><input type="text" name="id" required="required" autofocus="autofocus" placeholder="아이디">
+				<input type="button" value="중복확인" onclick="idChk()" ></td></tr>
+		<tr><th>비밀번호</th><td><input type="password" name="password" required="required" placeholder="비밀번호 "></td></tr>
+		<tr><th>암호확인</th><td><input type="password" name="password2" required="required" placeholder="비밀번호 확인"></td></tr>
+		<tr><th>닉네임</th><td><input type="text" name="name" required="required" placeholder="닉네임"></td></tr>
+		<tr><th>이메일</th><td><input type="email" name="address" required="required" placeholder="이메일 xx@xx.xx"></td></tr>
 		<tr><th>전화번호</th><td><input type="text" name="tel" required="required"
 								 pattern="\d{3}-\d{3,4}-\d{4}" placeholder="xxx-xxxx-xxxx"></td></tr>
 		<tr><th colspan="2"><input type="submit"  value="확인" ></th></tr>

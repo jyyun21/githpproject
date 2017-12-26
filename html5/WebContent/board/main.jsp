@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>유머프로젝트-hp-</title>
+<title>마지막유머~마유~</title>
 <link rel="stylesheet" type="text/css" href="common.css">
 
 

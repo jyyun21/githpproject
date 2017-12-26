@@ -181,28 +181,28 @@
 	
 </style>
 </head>
-<!--바디시작-----------------------  -->
+<!--바디시작------------------------->
 <body>
 <div id="logo_line_container">
 	<div id="logo_line" class='cf'>
 		<div id="logo_line1" >
             <div id="logo_toplogo">
-              <a href='main.do' target='_top'><img src='decorator/images/lasthumor.PNG' style="content:normal !important;"></a></div>
+              <a href='main.do' target='_top'><img src='images/lasthumor.PNG' style="content:normal !important;"></a></div>
 		</div><!--logo_line1-->
         <div id="logo_line2" >
             <div id="logo_menu">
-                <a href="/board/list.php?table=announce" id="btn_topmenu_announce"></a>
-                <a href="/board/control_panel.php" id="btn_topmenu_control_panel"></a>
+                <a href="#" id="btn_topmenu_announce"></a>
+                <a href="#" id="btn_topmenu_control_panel"></a>
             </div>
             <div id="logo_line_search_div">
-                <form action="/board/list.php" method="get" name="up_search" id="search" onsubmit="return up_search_check();">
+                <form action="#" method="get" name="up_search" id="search" onsubmit="return up_search_check();">
                     <input type="hidden" name="kind" value="search">
                     <select name="keyfield">
                         <option value="subject" selected="">제목</option>
                         <option value="name">이름</option>
                     </select>
                     <input type="text" size="20" name="keyword" value="">
-                    <input type="image" name="Submit" value="검색" src="decorator/images/search.png">
+                    <input type="image" name="Submit" value="검색" src="images/search.png">
                 </form>
             </div>
                        
@@ -227,7 +227,7 @@
  	  %>
 	 	  <div id="login_div" >
             <form name="login" method="post" action="login.do" target="_top">
-                	<h2 style="text-align: left;">${member==null ? '손' : member.name}님 반갑습니다.</h2>
+                	<h2 style="text-align: left;">${member==null ? '손' : member.name }님 반갑습니다.</h2>
             </form>
             <div id="login_user_menu">
                 <a href="joinForm.do" target="_top">회원가입</a>
@@ -240,7 +240,7 @@
 </div>
        
         
- <!-- 메뉴시작----------------------------------------------------------------------------------- -->       
+ <!-- 메뉴시작------------------------------------------------------------------------------------->       
 
 
 <nav id="topMenu" >

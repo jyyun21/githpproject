@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import humorProject.dao.Board;
 import humorProject.dao.BoardBest;
@@ -13,11 +14,22 @@ import humorProject.dao.BoardBestDao;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
 import humorProject.dao.BoardNoticeDao;
+import humorProject.dao.MemberDao;
+import humorProject.model.Member;
 
 public class BoardBestList implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+		//SessionChk-MainAction.java에서 가져옴. 닉네임받아오기위해서
+				HttpSession session = request.getSession();
+				String id = (String)session.getAttribute("id");
+				if(id != null ) {
+				MemberDao md = MemberDao.getInstance();
+				Member member = md.select(id);
+				request.setAttribute("member", member);
+				}
+		
 		BoardBestDao bestDao = BoardBestDao.getInstance();
 		BoardDao bd = null;
 		List<BoardBest> bestList = null;
