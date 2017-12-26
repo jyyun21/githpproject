@@ -11,16 +11,7 @@
 
 </head>
 <body>
-<h2 style="text-align: left;">${member==null ? '손' : member.name}님 반갑습니다.</h2>
-
-<form action="login.do">
-	<table><caption>로그인</caption>
-		<tr><th>아이디</th><td><input type="text" name="id"  required="required" autofocus="autofocus"></td></tr>
-		<tr><th>암호</th><td><input type="password" name="password"  required="required" ></td></tr>
-		<tr><th colspan="2"><input type="submit" value="확인" ></th></tr>
-	</table>
-</form>
-<a href="joinForm.do">회원가입</a>
+	<h2 style="text-align: left;">${member==null ? '손' : member.name}님 반갑습니다.</h2>
 </body>
 </html>
 

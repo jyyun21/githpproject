@@ -208,10 +208,6 @@
                        
         </div><!--logo_line2-->
         
-     <%/* 로그인 했을때 와 안했을 때 메뉴구성 변경 - 로그인 안했을 때*/
- 	 String id = (String)session.getAttribute("id");
- 		if(id == null || id.equals("")){
-	 %>
         <div id="login_div" >
             <form name="login" method="post" action="login.do" target="_top">
                 <input name="id" type="text" id="id" value="" class="login_input" placeholder="ID" required="required">
@@ -222,20 +218,6 @@
                 <a href="joinForm.do" target="_top">회원가입</a>
             </div>
         </div>
-      <%/* 로그인 했을 때  */
- 	  }else{
- 	  %>
-	 	  <div id="login_div" >
-            <form name="login" method="post" action="login.do" target="_top">
-                	<h2 style="text-align: left;">${member==null ? '손' : member.name}님 반갑습니다.</h2>
-            </form>
-            <div id="login_user_menu">
-                <a href="joinForm.do" target="_top">회원가입</a>
-            </div>
-        </div> 
- 	  <%
- 	  }
-   	  %>
     </div>
 </div>
        
@@ -248,29 +230,14 @@
 	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=humor">유머게시판</a></li>
 	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=free">자유게시판</a></li>
 	 	  <li class="topMenuLi"><a class="menuLink" href="noticeForm.do">공지</a></li> 
-	 	  
-	 	  <%/* 로그인 했을때 와 안했을 때 메뉴구성 변경 - 로그인 안했을 때*/
-	 	  id = (String)session.getAttribute("id");
-	 		if(id == null || id.equals("")){
-	 	  %>
-	 	  <li class="topMenuLi"><a class="menuLink" href="#">접속하기</a>
-	 	  	<ul class="submenu"> 
-	 	  		<li><a href="loginForm.do" class="submenuLink">로그인</a></li>
-	 	  		<li><a href="joinForm.do" class="submenuLink">회원가입</a></li>
-	 	  	</ul>
-	 	  <%/* 로그인 했을 때  */
-	 	  }else{
-	 	  %>
 	 	  <li class="topMenuLi"><a class="menuLink" href="#">마이페이지</a>
-	 	  <ul class="submenu"> 
+	 	  
+	 	  	<ul class="submenu"> 
 	 	  		<li><a href="view.do" class="submenuLink">회원정보 조회</a></li>
 	 	  		<li><a href="updateForm.do" class="submenuLink">회원정보 수정</a></li>
 	 	  		<li><a href="deleteForm.do" class="submenuLink">회원 탈퇴</a></li>
 	 	  		<li><a href="logout.do" class="submenuLink">로그 아웃</a></li>
 	 	  	</ul>
-	 	 <%
-	 	  }
-	 	 %>
 	 	  </li> 
 	 </ul> 
 </nav>
