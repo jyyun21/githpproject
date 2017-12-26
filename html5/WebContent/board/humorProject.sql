@@ -7,20 +7,21 @@ create table hpmember(
 	reg_date date,
 	del char(1)
 );
-alter table hpmember add(del char(1));
-update hpmember set del ='n';
+
+--update hpmember set del ='n';
 select * from HPMEMBER;
-update hpmember set del = 'n' where id = 'jyyun21';
-alter table hpmember add (del char(1));
-delete from hpmember where id like 'a%';
-update hpmember set del='n';
-select * from hpmember;
+--update hpmember set del = 'y' where id = 'redc';
+--alter table hpmember add (del char(1));
+--delete from hpmember where id like 'a%';
+insert into hpmember values('master','master','마스터','m@m','000-0000-0000', sysdate, 'n');
+insert into hpmember values('a1','11','11','m@m','000-0000-0000', sysdate, 'n');
+insert into hpmember values('a2','11','22','m@m','000-0000-0000', sysdate, 'n');
 
 create table best_table(
 	id varchar2(20),
 	num number 
 );
-select * from best_table;
+--select * from best_table;
 update best_table set category = 'humor';
 alter table best_table add (category varchar2(10));
 select count(*) from best_table where id='jyyun21' and num = 5;

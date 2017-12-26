@@ -25,10 +25,12 @@ public class DeleteAction implements CommandProcess {
 			 result = md.delete(id);
 			if(result>0) {	session.invalidate();}
 			request.setAttribute("result", result);//0보다 크거나 0
+			session.invalidate();//세션해제
 		}else if(passwordChk==0) {//패스워드가 맞지않을 경우
 			result =-1;
 			request.setAttribute("result", result);
 		}
+		
 		return "delete.jsp";
 		
 	}

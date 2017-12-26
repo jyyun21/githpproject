@@ -25,7 +25,7 @@
 </script>
 <c:if test="${ result == 1}">
 	<script type="text/javascript">
-		alert("이미사용중.. 다른 아이디를 사용하세요");
+		alert("아이디를 사용할 수 없습니다.. 다른 아이디를 사용하세요");
 	</script>
 	<form >
 		<fieldset><legend>아이디 입력</legend>

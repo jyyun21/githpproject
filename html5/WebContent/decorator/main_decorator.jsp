@@ -208,7 +208,7 @@
                        
         </div><!--logo_line2-->
         
-     <%/* 로그인 했을때 와 안했을 때 메뉴구성 변경 - 로그인 안했을 때*/
+     <%/* 로그인 했을때 와 안했을 때 맨 위 구성 변경 - 로그인 안했을 때*/
  	 String id = (String)session.getAttribute("id");
  		if(id == null || id.equals("")){
 	 %>

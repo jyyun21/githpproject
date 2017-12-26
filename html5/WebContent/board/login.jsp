@@ -16,13 +16,13 @@
 </c:if>
 <c:if test="${result==0 }">
 	<script type="text/javascript">
-		alert("넌 누구냐!");
+		alert("입력하신 비밀번호가 올바르지 않습니다.");
 		history.go(-1);
 	</script>
 </c:if>
 <c:if test="${result==-1 }">
 	<script type="text/javascript">
-		alert("아이디 똑바로");
+		alert("존재하지 않는 아이디 입니다.");
 		history.go(-1);
 	</script>
 </c:if>

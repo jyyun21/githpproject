@@ -34,14 +34,15 @@ public class MemberDao {
 		int result = 1;
 		Member member = null;
 		try {
-			member = (Member)session.selectOne("memberns.select",id);//namespace붙여서 insert빨리찾음//넘어온 member랑 같으면 헷갈리므로 mem으로 명함.
-			if(member == null) result = 0;
-			else result = 1;
+			member = (Member)session.selectOne("memberns.selectJoinId",id);//namespace붙여서 insert빨리찾음//넘어온 member랑 같으면 헷갈리므로 mem으로 명함.
+			if(member == null) result = 0; //아이디가 존재하지않으면 0
+			else result = 1;//존재하고 del=n 이면 1. y일땐 어쩌지?
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return result;
 	}
+	
 	public int insert(Member member) {
 		int result = 0;
 		try {
@@ -57,11 +58,11 @@ public class MemberDao {
 		int result = -1;
 		try {
 			Member mem = (Member)session.selectOne("memberns.select",member.getId());//namespace붙여서 insert빨리찾음//넘어온 member랑 같으면 헷갈리므로 mem으로 명함.
-			if(mem==null) result =-1;
+			if(mem==null) result =-1;//아이디 불일치
 			else {
 				String dbPass = mem.getPassword();
-				if(dbPass.equals(member.getPassword())) result =1;
-				else result = 0;
+				if(dbPass.equals(member.getPassword())) result =1; //아이디, 비번 일치
+				else result = 0;//아이디 일치, 비번 불일치
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

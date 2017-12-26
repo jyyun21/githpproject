@@ -96,9 +96,6 @@ ALTER TABLE boardFile DROP COLUMN category;
 alter table board_best add(board_num number);
 
 
-
-출처: http://jwklife.tistory.com/5 [인 생]
-
 update boardfile set num=6 where num = 0;
 
 update board set del='y' where num = 27;
