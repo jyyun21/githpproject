@@ -8,7 +8,7 @@ public class BoardReportForm implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
-		if(SessionChk.chk(request, response))return "loginForm.jsp";
+		if(SessionChk.chk(request, response))return "loginNeed.jsp";
 		int num = Integer.parseInt(request.getParameter("num"));
 		String category = request.getParameter("category");
 		HttpSession session = request.getSession();

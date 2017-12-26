@@ -10,7 +10,7 @@
 <style type="text/css">
  #topMenu {
             height: 30px;  /* 메인 메뉴의 높이 */
-            width: 850px;  /* 메인 메뉴의 넓이 */
+            width: 750px;  /* 메인 메뉴의 넓이 */
                   margin-left: auto;
  				margin-right: auto;
             
@@ -67,7 +67,7 @@
         -o-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 오페라) */
     }
     .topMenuLi:hover .submenu { /* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */
-        height: 93px;           /* 높이를 93px로 설정 */
+        height: 124px;           /* 높이를 93px로 설정 *//* 124로 늘림. 서브메뉴4개 */
     }
     .submenuLink:hover {        /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */
         color: red;                 /* 글씨색을 빨간색으로 설정 */
@@ -77,24 +77,17 @@
 </style>
 </head>
 <body>
-<h2 style="margin-left: auto; margin-right: auto; width: 850px"><a href="main.do" style="text-decoration: none;">마지막 유머 Last Humor</a></h2>
+<h2 style="margin-left: auto; margin-right: auto; width: 750px"><a href="main.do" style="text-decoration: none;">마지막 유머 Last Humor</a></h2>
 <nav id="topMenu" >
 	 <ul> <li class="topMenuLi"><a class="menuLink" href="boardBestList.do">베스트게시판</a></li>
 	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=humor">유머게시판</a></li>
-	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=free">자유게시판</a>
-	 	  	<ul class="submenu"> 
-	 	  		<li><a href="boardList.do?category=free" class="submenuLink">게시판보기</a></li>
-	 	  		<li><a href="writeForm.do" class="submenuLink">글쓰기</a></li>
-	 	  		<li><a href="delete.do" class="submenuLink">회원 탈퇴</a></li>
-	 	  		<li><a class="submenuLink">지름게시판</a></li> 
-	 	  	</ul>
-
-		  </li>
+	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=free">자유게시판</a></li>
 	 	  <li class="topMenuLi"><a class="menuLink" href="noticeForm.do">공지</a></li> 
 	 	  <li class="topMenuLi"><a class="menuLink" href="#">마이페이지</a>
 	 	  	<ul class="submenu"> 
 	 	  		<li><a href="view.do" class="submenuLink">회원정보 조회</a></li>
 	 	  		<li><a href="updateForm.do" class="submenuLink">회원정보 수정</a></li>
+	 	  		<li><a href="deleteForm.do" class="submenuLink">회원 탈퇴</a></li>
 	 	  		<li><a href="logout.do" class="submenuLink">로그 아웃</a></li>
 	 	  	</ul>
 	 	  </li> 

@@ -21,6 +21,7 @@ public class BoardClickBest implements CommandProcess{
 		int num = Integer.parseInt(request.getParameter("num"));
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		String category = request.getParameter("category");
+
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		BoardDao bd = null;
@@ -52,10 +53,12 @@ public class BoardClickBest implements CommandProcess{
 				
 			}
 		}
+		
 		request.setAttribute("select", select); //result = 0이면 아직 추천안함. 1이면 추천을 이미했음
 		request.setAttribute("category", category);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
+		
 		//Num. pageNum
 		return "clickBest.jsp";
 	}

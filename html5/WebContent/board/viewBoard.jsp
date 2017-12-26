@@ -23,9 +23,11 @@
 				location.href = "boardDelete.do?num=${board.num }&category=${board.category }";
 			}
 		}
+		
 		$(function() {
 			$('#report').click(function() {
 				var url = "../boardReportForm.do?num=${board.num }&category=${board.category }&id=${board.id }&notice=${notice}"
+				
 				window.open(url,"","width =450 height=420"); //새로운창(idChk.jsp)을 띄움 
 			});
 		});
@@ -48,7 +50,7 @@
 			<td colspan="5">
 				<c:if test="${fileList != null }">
 					<c:forEach var="file" items="${fileList }">
-						<img alt="사진 없어요!" src="upload/${file.fileName }" width="550px">
+						<img alt="사진 없어요!" src="../upload/${file.fileName }" width="550px">
 						<%-- <video src="upload/${file.fileName }" controls="controls"></video> --%>
 					</c:forEach> 
 				</c:if>
