@@ -64,7 +64,6 @@ public class View implements CommandProcess{
 			request.setAttribute("member", member);
 		}
 		
-		
 		return "viewBoard.jsp";
 	}
 

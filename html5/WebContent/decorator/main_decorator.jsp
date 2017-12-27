@@ -68,7 +68,7 @@
         -o-transition: height .2s; /* height를 변화 시켰을 때 0.2초간 변화 되도록 설정(구버전 오페라) */
     }
     .topMenuLi:hover .submenu { /* 상위 메뉴에 마우스 모버한 경우 그 안의 하위 메뉴 스타일 설정 */
-        height: 124px;           /* 높이를 93px로 설정 *//* 124로 늘림. 서브메뉴4개 */
+        height: 155px;           /* 높이를 93px로 설정 *//* 155로 늘림. 서브메뉴5개 */
     }
     .submenuLink:hover {        /* 하위 메뉴의 a 태그의 마우스 오버 스타일 설정 */
         color: red;                 /* 글씨색을 빨간색으로 설정 */
@@ -222,15 +222,15 @@
                 <a href="joinForm.do" target="_top">회원가입</a>
             </div>
         </div>
-      <%/* 로그인 했을 때  */ 
+      <%/* 로그인 했을 때  */
  	  }else{
  	  %>
 	 	  <div id="login_div" >
             <form name="login" method="post" action="login.do" target="_top">
                 	<h2 style="text-align: left;">${member==null ? '손' : member.name }님 반갑습니다.</h2>
             </form>
-            <div id="login_user_menu">
-                <a href="joinForm.do" target="_top">회원가입</a>
+         	 <div id="login_user_menu">
+                <a href="logout.do" target="_top">로그아웃</a>
             </div>
         </div> 
  	  <%
@@ -265,6 +265,7 @@
 	 	  <ul class="submenu"> 
 	 	  		<li><a href="view.do" class="submenuLink">회원정보 조회</a></li>
 	 	  		<li><a href="updateForm.do" class="submenuLink">회원정보 수정</a></li>
+	 	  		<li><a href="#" class="submenuLink">쓴 글 보기</a></li>
 	 	  		<li><a href="deleteForm.do" class="submenuLink">회원 탈퇴</a></li>
 	 	  		<li><a href="logout.do" class="submenuLink">로그 아웃</a></li>
 	 	  	</ul>
