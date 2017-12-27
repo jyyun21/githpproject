@@ -34,9 +34,9 @@ public class BoardBestDao {
 		int num = 0;
 		try {
 			//최고 큰 수 구하기
-			num = (int) session.selectOne("getMaxNum");
+			num = (int) session.selectOne("boardBestns.getMaxNum");
 			bb.setNum(num+1);
-			result = session.insert("write", bb);
+			result = session.insert("boardBestns.write", bb);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -46,7 +46,7 @@ public class BoardBestDao {
 		List<BoardBest> list = null;
 		try {
 			//boardBest에 startRow와 endRow를 입력해서 넣어줌, 그 값을 이용하기 위해
-			list = session.selectList("list", boardBest);
+			list = session.selectList("boardBestns.list", boardBest);
 		} catch (Exception e) { System.out.println(e.getMessage());
 		}
 		return list;
@@ -54,7 +54,7 @@ public class BoardBestDao {
 	public int total() {
 		int total = 0;
 		try {
-			total = (int) session.selectOne("total");
+			total = (int) session.selectOne("boardBestns.total");
 		} catch (Exception e) { System.out.println(e.getMessage());
 		}
 		return total;

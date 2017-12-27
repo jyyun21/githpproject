@@ -266,8 +266,8 @@
 	 	  		<li><a href="view.do" class="submenuLink">회원정보 조회</a></li>
 	 	  		<li><a href="updateForm.do" class="submenuLink">회원정보 수정</a></li>
 	 	  		<li><a href="#" class="submenuLink">쓴 글 보기</a></li>
+	 	  		<li><a href="#" class="submenuLink">스크랩보기</a></li>
 	 	  		<li><a href="deleteForm.do" class="submenuLink">회원 탈퇴</a></li>
-	 	  		<li><a href="logout.do" class="submenuLink">로그 아웃</a></li>
 	 	  	</ul>
 	 	 <%
 	 	  }
