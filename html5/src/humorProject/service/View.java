@@ -6,12 +6,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFile;
 import humorProject.dao.BoardFileDao;
 import humorProject.dao.BoardFreeDao;
 import humorProject.dao.BoardNoticeDao;
+import humorProject.dao.MemberDao;
+import humorProject.model.Member;
 
 public class View implements CommandProcess{
 
@@ -53,6 +56,15 @@ public class View implements CommandProcess{
 		request.setAttribute("id", id);
 		request.setAttribute("best", best);
 		//request.setAttribute("notice", notice);
+		
+		//SessionChk-MainAction.java
+		if(id!=null) {
+			MemberDao md =MemberDao.getInstance();
+			Member member = md.select(id);
+			request.setAttribute("member", member);
+		}
+		
+		
 		return "viewBoard.jsp";
 	}
 

@@ -222,7 +222,7 @@
                 <a href="joinForm.do" target="_top">회원가입</a>
             </div>
         </div>
-      <%/* 로그인 했을 때  */
+      <%/* 로그인 했을 때  */ 
  	  }else{
  	  %>
 	 	  <div id="login_div" >

@@ -41,23 +41,27 @@ public class BoardClickBest implements CommandProcess{
 		int select = btd.clickBest(bestTable);//추천테이블에 누가 추천했는지 정보 기입
 		if(select ==0) { //아직 추천을 안했다면
 			bd.bestPlus(num); //게시판테이블에도 추천수 plus하기
-			if(bd.getBestNum(num) ==10) {
-				//자유, 유머 게시판에 따라 bd가 선택됨 
-				Board board1=bd.select(num);
-				BoardBestDao bestDao = BoardBestDao.getInstance();
-				BoardBest bb = new BoardBest();
-				bb.setCategory(board1.getCategory());
-				//유머, 자유게시판의 번호를 저장
-				bb.setBoard_num(board1.getNum());
-				bestDao.write(bb);
-				
+			if (category.equals("free") || category.equals("humor")) { //자게나 유게일때, 공지사항은 베스트로못가게
+				if (bd.getBestNum(num) == 10) {
+					// 자유, 유머 게시판에 따라 bd가 선택됨
+					Board board1 = bd.select(num);
+					BoardBestDao bestDao = BoardBestDao.getInstance();
+					BoardBest bb = new BoardBest();
+					bb.setCategory(board1.getCategory());
+					// 유머, 자유게시판의 번호를 저장
+					bb.setBoard_num(board1.getNum());
+					bestDao.write(bb);
+				}
 			}
 		}
+		String best = request.getParameter("best");
+		
 		
 		request.setAttribute("select", select); //result = 0이면 아직 추천안함. 1이면 추천을 이미했음
 		request.setAttribute("category", category);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
+		request.setAttribute("best", best);
 		
 		//Num. pageNum
 		return "clickBest.jsp";

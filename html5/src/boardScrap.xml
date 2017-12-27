@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardScrapns">
+	<resultMap type="boardScrap"		id="ResultMap">
+		<result property="num"		column="num" />
+		<result property="category"		column="category" />
+		<result property="board_num"		column="board_num" />
+		<result property="startRow"		column="startRow" />
+		<result property="endRow"		column="endRow" />
+	</resultMap>
+	<select id="getMaxNum" resultType="int">
+		select nvl(max(num),0) from board_scrap
+	</select>
+	<insert id="write" parameterType="boardScrap">
+		insert into board_scrap values(#{num}, #{category}, #{board_num})	
+	</insert>
+	<select id="list" parameterType="boardScrap" resultType="boardScrap">
+		select * from (select rowNum rn, a.* from ( select * from board_scrap order by num desc ) a ) where rn between ${startRow} and ${endRow}
+	</select>
+	<select id="total" resultType="int">
+		select count(*) from board_scrap
+	</select>
+</mapper>

@@ -47,8 +47,7 @@ public class BoardDao {
 		try {
 			num = (int) session.selectOne("getMaxNum");
 			board.setNum(num + 1);
-			if (num > 0)
-				result = session.insert("write", board);
+			result = session.insert("write", board);
 			int number = board.getNum();
 			sessionFile.update("tempChange", number);
 

@@ -41,8 +41,8 @@
 						<td>${board.category }</td>
 						<td align="left" style="margin-left: 10px;"><a
 							title="${board.content }"
-							href="viewBoard.do?num=${board.num }&pageNum=${pageNum }
-								&category=${board.category}&best='best'">${board.subject }</a>
+							href='viewBoard.do?num=${board.num }&pageNum=${pageNum }
+								&category=${board.category}&best="best"'>${board.subject }</a>
 						</td>
 						<td>${board.id }</td>
 						<td>${board.time }</td>

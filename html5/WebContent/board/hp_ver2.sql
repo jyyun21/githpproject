@@ -31,6 +31,7 @@ create table boardFree (
 	re_level number 
 );
 
+
 create table boardNotice (
 	num number primary key,
 	id varchar2(30) ,
@@ -48,9 +49,11 @@ select * from boardNotice;
 
 create table board_best(
 	num number ,
-	category varchar2(20)
+	category varchar2(20),
+	board_num number
 );
 select * from board_best;
+
 create table report(
 	num number,
 	id varchar2(30),
@@ -58,14 +61,32 @@ create table report(
 	r_type varchar2(20),
 	r_content varchar2(500)
 );
-
 select * from REPORT;
+
+update boardFree set best =9 where num=3;
+
+create table boardFile (
+	fileName varchar2(50) not null,
+	fileSize NUMBER,
+	num number,
+	category varchar2(20)
+);
+select * from boardfile;
+
+create table board_scrap(
+	id varchar2
+	num number,
+	category varchar2(20),
+	board_num number
+);
+select * from board_scrap;
+
+
 CONSTRAINT FK_USERS FOREIGN KEY(USERNO)
 REFERENCES USERS_INFO(USERNO)
 ALTER TABLE 테이블명 ADD CONSTRAINT fk_bbs_id FOREIGN KEY(id) REFERENCES 참조되는 테이블명(id);
 alter table board add constraint fk_board2 foreign key(id) references hpmember(id);
 alter table board drop constraint FK_BOARD;
-update boardFree set best =9 where num=3;
 
 select * from board order by num desc;
 select * from boardFree order by num desc;
@@ -73,27 +94,16 @@ select * from member2;
 select nvl(max(num),0) from board;
 
 insert into board values(1, 'master', 'temp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
-insert into boardFree values(0, 'master', 'Freetemp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
+insert into boardFree values(10, 'h2', '안녕?', '안뇨옹?', 0, sysdate, 0, 'n', 'localhost', 'head1', 'free',0,0,0 );
 insert into boardBest values(0, 'master', 'Besttemp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
 
-create table boardFile (
-	fileName varchar2(50) not null,
-	fileSize NUMBER,
-	num number
-);
 
-create table freeFile (
-	fileName varchar2(50) not null,
-	fileSize NUMBER,
-	num number
-);
-alter table boardFile add (category varchar2(20));
+--alter table boardFile add (category varchar2(20));
 update boardFile set category = 'humor';
 alter table boardFile add constraint fk_file foreign key(num) references board(num);
-select * from boardfile;
 ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
 ALTER TABLE boardFile DROP COLUMN category;
-alter table board_best add(board_num number);
+--alter table board_best add(board_num number);
 
 
 update boardfile set num=6 where num = 0;
