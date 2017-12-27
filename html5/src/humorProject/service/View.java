@@ -12,11 +12,14 @@ import humorProject.dao.BoardFile;
 import humorProject.dao.BoardFileDao;
 import humorProject.dao.BoardFreeDao;
 import humorProject.dao.BoardNoticeDao;
+import humorProject.dao.MemberDao;
+import humorProject.model.Member;
 
 public class View implements CommandProcess{
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+		
 		//베스트게시판에서 넘어온건지 확인
 		String best = request.getParameter("best");
 	//	String notice = request.getParameter("notice");
@@ -53,6 +56,15 @@ public class View implements CommandProcess{
 		request.setAttribute("id", id);
 		request.setAttribute("best", best);
 		//request.setAttribute("notice", notice);
+
+		//SessionChk-MainAction.java에서 가져옴. 닉네임받아오기위해서
+		if(id != null ) {
+		MemberDao md = MemberDao.getInstance();
+		Member member = md.select(id);
+		request.setAttribute("member", member);
+		}
+
+		
 		return "viewBoard.jsp";
 	}
 

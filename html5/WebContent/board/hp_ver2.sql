@@ -77,7 +77,7 @@ insert into boardFree values(0, 'master', 'Freetemp', '파일 임시', 0, sysdat
 insert into boardBest values(0, 'master', 'Besttemp', '파일 임시', 0, sysdate, 0, 'y', 'localhost', null, 'temp',0,0,0 );
 
 create table boardFile (
-	fileName varchar2(50) not null,
+	fileName varchar2(50) not null
 	fileSize NUMBER,
 	num number
 );
