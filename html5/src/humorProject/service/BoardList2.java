@@ -1,41 +1,39 @@
 package humorProject.service;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sun.xml.internal.messaging.saaj.soap.ver1_1.Header1_1Impl;
+
+import humorProject.dao.BestTable;
 import humorProject.dao.Board;
-import humorProject.dao.BoardBest;
-import humorProject.dao.BoardBestDao;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
 import humorProject.dao.BoardNoticeDao;
 import humorProject.dao.MemberDao;
+import humorProject.dao.RowNum;
 import humorProject.model.Member;
 
-public class BoardBestList implements CommandProcess {
+public class BoardList2 implements CommandProcess {
 
+	//모든 페이지를 가져오는것이 아니라 선택한 페이지만 가져오도록 만듬 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 		//SessionChk-MainAction.java에서 가져옴. 닉네임받아오기위해서
-				HttpSession session = request.getSession();
-				String id = (String)session.getAttribute("id");
-				if(id != null ) {
-				MemberDao md = MemberDao.getInstance();
-				Member member = md.select(id);
-				request.setAttribute("member", member);
-				}
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		if(id != null ) {
+		MemberDao md = MemberDao.getInstance();
+		Member member = md.select(id);
+		request.setAttribute("member", member);
+		}
 		
-		BoardBestDao bestDao = BoardBestDao.getInstance();
-		BoardDao bd = null;
-		List<BoardBest> bestList = null;
-		List<Board> boardList = new ArrayList<>();
-		// 추천수10개이상의 cate와 num을 저장한 bestList를 얻어온다.
-		
+		String category = request.getParameter("category");
+		String head= request.getParameter("head");
 		
 		final int ROWPERPAGE = 10; //한페이지당 보여주는 글의 개수
 		final int PAGEPERBLOCK = 10;//페이지를 표시할 개수 
@@ -46,45 +44,41 @@ public class BoardBestList implements CommandProcess {
 		int currentPage =Integer.parseInt(pageNum); //현재 페이지 1,  2, 3페이지
 		int startRow = (currentPage -1)*ROWPERPAGE +1;// 1~10, 11~20, 21~30
 		int endRow = startRow + ROWPERPAGE -1;
-		int total = bestDao.total(); //총 글의 개수
+		BoardDao bd = null;
+		//notice글을 볼때의 category를 humor, free로 변경하자
+		if(head !=null ) {
+			if(category.equals("notice")) category=head;
+		}
+		
+		 if(category.equals("free")) {
+			bd = BoardFreeDao.getInstance();
+		}
+		else {
+			bd = BoardDao.getInstance();
+		}
+		int total = bd.total(); //총 글의 개수
+		//System.out.println(total);
 		int totPage = (int)Math.ceil((double)total/ROWPERPAGE);//한 페이지당 글을 표시할 수 있는 개수로 나누면 총 페이지개수가 나옴 
 		int startPage = currentPage -(currentPage-1)%PAGEPERBLOCK; //1,2,3,4,5,6,7,8,9,0 || 11,12,13,14,15,16,17,18,19,20 페이지 수 10개씩 표시되게 한다.
 													//7페이지면 1~10, 15페이지면 11~20, 28페이지면 21~30 페이지가 게시판밑에 표시됨
 		int endPage = startPage + PAGEPERBLOCK-1;
 		if(endPage>totPage) endPage = totPage; //마지막 페이지 수 변경, 34페이지까지있는 게시판이라면 이 코드가 없으면 40페이지까지 표시된다.
 		int tot = total - startRow +1;
-		BoardBest boardBest = new BoardBest(); //첫열과 끝열을 정함 
-		boardBest.setStartRow(startRow);
-		boardBest.setEndRow(endRow);
-		
-		
-		
-		
-		//List<Board> list = bd.getList(board); //지정한 페이지의 글만 읽어옴
-		//startRow와 end Row만 읽어옴
-		bestList = bestDao.list(boardBest);
-		
-		for (BoardBest b : bestList) {
-			String category = b.getCategory(); //어떤 게시판인지 알기
-			if (category.equals("free"))
-				bd = BoardFreeDao.getInstance();
-			else
-				bd = BoardDao.getInstance();
-			Board board = bd.select(b.getBoard_num());
-			board.setBoardBestNum(b.getNum());//실제 유머게시판의 num이아니라 best게시판의 num을 설정
-			boolean result = boardList.add(board);
-		}
+		Board board = new Board();
+		board.setStartRow(startRow);
+		board.setEndRow(endRow);
+		List<Board> list = bd.getList(board); //지정한 페이지의 글만 읽어옴
 		
 		//시간 설정부분
-		for(Board board1: boardList) {
+		for(Board board1: list) {
 			SimpleDateFormat sdf2 = new SimpleDateFormat("yy-MM-dd");// HH:mm:ss
 			String old = sdf2.format(board1.getReg_date());
 			//if(today.compareTo(board.getReg_date()) <0) board.setTime(news); //today가 무조건 커 1 이 나온다.
 			board1.setTime(old);
 		}
-		//공지사항
+		//공지사항 리스트
 		BoardNoticeDao bnd = BoardNoticeDao.getInstance();
-		List<Board> noticeList = bnd.getList("best"); //head가 best인것만
+		List<Board> noticeList = bnd.getList(category); //notice는 head가 category
 		request.setAttribute("noticeList", noticeList);
 		for(Board board1: noticeList) {
 			SimpleDateFormat sdf2 = new SimpleDateFormat("yy-MM-dd");// HH:mm:ss
@@ -94,7 +88,6 @@ public class BoardBestList implements CommandProcess {
 		}
 		
 		
-		request.setAttribute("noticeList", noticeList);
 		request.setAttribute("PAGEPERBLOCK", PAGEPERBLOCK);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("currentPage", currentPage);
@@ -105,8 +98,9 @@ public class BoardBestList implements CommandProcess {
 		request.setAttribute("startPage",startPage );
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("ROWPERPAGE", ROWPERPAGE);
-		request.setAttribute("boardList", boardList);
-		request.setAttribute("bestList", bestList);
+		request.setAttribute("list", list);
+		request.setAttribute("category", category);
+		
 		return "myWriteList.jsp";
 	}
 

@@ -9,12 +9,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class BoardDao {
-	private static BoardDao instance = new BoardDao();
+public class BoardDao2 {
+	private static BoardDao2 instance = new BoardDao2();
 
-	public BoardDao() {
+	public BoardDao2() {
 	}
-	public static BoardDao getInstance() {
+	public static BoardDao2 getInstance() {
 		return instance;
 	}
 	/////////// DB연결부분///////////////////////////
@@ -22,7 +22,7 @@ public class BoardDao {
 	private static SqlSession sessionFile;
 	static { // static 변수 초기화 블럭
 		try {
-			Reader reader = Resources.getResourceAsReader("configuration_board2.xml");
+			Reader reader = Resources.getResourceAsReader("configuration_board.xml");
 			SqlSessionFactory ssf = new SqlSessionFactoryBuilder().build(reader); // sqlsession을 만든다.
 			session = ssf.openSession(true); // 이걸 써줘야 db에서 자동 commit이 된다.
 		} catch (IOException e) {

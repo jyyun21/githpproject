@@ -105,7 +105,8 @@ ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
 ALTER TABLE boardFile DROP COLUMN category;
 --alter table board_best add(board_num number);
 
-
 update boardfile set num=6 where num = 0;
 
 update board set del='y' where num = 27;
+select * from boardFree where ID= 'master';
+select * from board where ID='master';
