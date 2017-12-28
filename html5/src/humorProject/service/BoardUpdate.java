@@ -3,10 +3,10 @@ package humorProject.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
 import humorProject.dao.BoardNoticeDao;
+import humorProject.model.Board;
 
 public class BoardUpdate implements CommandProcess{
 

@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import humorProject.model.BoardBest;
+
 public class BoardBestDao {
 	private static BoardBestDao instance = new BoardBestDao();
 

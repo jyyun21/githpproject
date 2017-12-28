@@ -56,4 +56,8 @@
 	<select id="getBestNum" parameterType="int" resultType="int">
 		select best from board where num = #{num}
 	</select>
+	<select id="search" parameterType="string" resultType="board">
+		select * from board where subject like '%'||#{keyword}||'%'
+	</select>
+	<!-- 문자로 %를 넣고 ||를통해 문자끼리 연결 -->
 </mapper>

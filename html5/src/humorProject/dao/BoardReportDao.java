@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import humorProject.model.BoardReport;
+
 public class BoardReportDao {
 	private static BoardReportDao instance = new BoardReportDao();
 

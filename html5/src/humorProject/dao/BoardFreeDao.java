@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import humorProject.model.Board;
+
 public class BoardFreeDao extends BoardDao {
 	private static BoardFreeDao instance = new BoardFreeDao();
 
@@ -146,4 +148,5 @@ public class BoardFreeDao extends BoardDao {
 		}
 		return result;
 	}
+	
 }

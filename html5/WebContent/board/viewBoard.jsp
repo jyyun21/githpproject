@@ -25,7 +25,6 @@
 				location.href = "boardDelete.do?num=${board.num }&category=${board.category }";
 			}
 		}
-		
 		$(function() {
 			//신고하기
 			$('#report').click(function() {
@@ -49,12 +48,17 @@
 			$('#normalClick').click(function() {
 				location.href='clickbest.do?num=${board.num}&pageNum=${pageNum }&category=${board.category }'; 
 			});
+			//스크랩에서 추천
+			$('#scrapClick').click(function() {
+				location.href='clickbest.do?num=${board.num}&pageNum=${pageNum }&category=${board.category }&scrap=scrap'; 
+			});
 			//스크랩하기
 			$('#scrap').click(function() {
 				//location.href='boardScrap.do?num=${board.num}&pageNum=${pageNum }&category=${board.category }';
 				var check = confirm("스크랩하시겠습니까?");
 				if(check){
-					var url = 'boardScrap.do?num=${board.num}&pageNum=${pageNum }&category=${board.category }';
+					//스크랩할때 폴더를 분류해서 넣을건가? -> 우선 그냥 스크랩한것만 넣자
+					var url = '../boardScrap.do?num=${board.num}&pageNum=${pageNum }&category=${board.category }';
 					window.open(url,"","width =450 height=300"); //새로운창을 띄움 
 				}
 			});
@@ -83,13 +87,18 @@
 				</c:if>
 				<pre width="600" id="pre" style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;">${board.content }</pre>
 				<span >
-					<c:if test="${best ==null }">
+					<c:if test="${best ==null &&scrap ==null}">
 						<button id="normalClick" >추천
 						<img alt="" src="thumb.PNG" width="20px">
 						</button>
 					</c:if>
 					<c:if test="${best!=null }">
 						<button id="bestClick" >추천
+						<img alt="" src="thumb.PNG" width="20px">
+						</button>
+					</c:if>
+					<c:if test="${scrap!=null }">
+						<button id="scrapClick" >추천
 						<img alt="" src="thumb.PNG" width="20px">
 						</button>
 					</c:if>
@@ -105,11 +114,14 @@
 		</tr>
 	</table>
 	<!-- notice는 category가 notice니까 head를 통해 list를 판별하자 그래서 head를 보내줌 -->
-	<c:if test="${best ==null }">
-	<a href="boardList.do?pageNum=${pageNum }&category=${board.category}&head=${board.head}" style="float: left;">목록</a>
-	</c:if>
 	<c:if test="${best!= null }">
 	<a href="boardBestList.do?pageNum=${pageNum }&category=${board.category}&head=${board.head}" style="float: left;">목록</a>
+	</c:if>
+	<c:if test="${scrap != null}">
+	<a href="boardScrapList.do?pageNum=${pageNum }&category=${board.category}&head=${board.head}" style="float: left;">목록</a>
+	</c:if>
+	<c:if test="${best ==null && scrap ==null }">
+	<a href="boardList.do?pageNum=${pageNum }&category=${board.category}&head=${board.head}" style="float: left;">목록</a>
 	</c:if>
 	
 	<c:if test="${id != null }">

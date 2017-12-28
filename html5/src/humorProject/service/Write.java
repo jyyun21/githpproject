@@ -5,9 +5,9 @@ import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
+import humorProject.model.Board;
 
 
 

@@ -10,8 +10,8 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import humorProject.dao.BoardDao;
-import humorProject.dao.BoardFile;
 import humorProject.dao.BoardFileDao;
+import humorProject.model.BoardFile;
 import sun.awt.image.PixelConverter.Bgrx;
 
 

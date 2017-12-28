@@ -63,7 +63,7 @@ create table report(
 );
 select * from REPORT;
 
-update board set best =39 where num=9;
+update board set best =9 where num=25;
 
 create table boardFile (
 	fileName varchar2(50) not null,
@@ -74,10 +74,11 @@ create table boardFile (
 select * from boardfile;
 
 create table board_scrap(
-	id varchar2
 	num number,
+	id varchar2(20),
 	category varchar2(20),
-	board_num number
+	board_num number,
+	folder varchar2(20)
 );
 select * from board_scrap;
 

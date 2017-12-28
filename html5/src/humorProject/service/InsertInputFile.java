@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import humorProject.dao.BoardFile;
 import humorProject.dao.BoardFileDao;
+import humorProject.model.BoardFile;
 
 
 

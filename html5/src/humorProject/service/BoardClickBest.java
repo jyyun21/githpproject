@@ -4,14 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import humorProject.dao.BestTable;
 import humorProject.dao.BestTableDao;
-import humorProject.dao.Board;
-import humorProject.dao.BoardBest;
 import humorProject.dao.BoardBestDao;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
 import humorProject.dao.BoardNoticeDao;
+import humorProject.model.BestTable;
+import humorProject.model.Board;
+import humorProject.model.BoardBest;
 
 public class BoardClickBest implements CommandProcess{
 
@@ -55,13 +55,14 @@ public class BoardClickBest implements CommandProcess{
 			}
 		}
 		String best = request.getParameter("best");
-		
+		String scrap = request.getParameter("scrap");
 		
 		request.setAttribute("select", select); //result = 0이면 아직 추천안함. 1이면 추천을 이미했음
 		request.setAttribute("category", category);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
 		request.setAttribute("best", best);
+		request.setAttribute("scrap", scrap);
 		
 		//Num. pageNum
 		return "clickBest.jsp";

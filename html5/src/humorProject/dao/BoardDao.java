@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import humorProject.model.Board;
+
 public class BoardDao {
 	private static BoardDao instance = new BoardDao();
 
@@ -132,6 +134,13 @@ public class BoardDao {
 		return result;
 	}
 	
-	
+	public List<Board> search(String keyword){
+		List<Board> list = null;
+		try {
+			list = session.selectList("search", keyword);
+		} catch (Exception e) {System.out.println(e.getMessage());
+		}
+		return list;
+	}
 	
 }

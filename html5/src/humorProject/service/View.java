@@ -6,22 +6,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-import humorProject.dao.Board;
 import humorProject.dao.BoardDao;
-import humorProject.dao.BoardFile;
 import humorProject.dao.BoardFileDao;
 import humorProject.dao.BoardFreeDao;
 import humorProject.dao.BoardNoticeDao;
 import humorProject.dao.MemberDao;
+import humorProject.model.Board;
+import humorProject.model.BoardFile;
 import humorProject.model.Member;
 
 public class View implements CommandProcess{
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
+		//SessionChk-MainAction.java 닉네임 가져오는 부분
+		if(id!=null) {
+			MemberDao md =MemberDao.getInstance();
+			Member member = md.select(id);
+			request.setAttribute("member", member);
+		}
+		
+		
 		//베스트게시판에서 넘어온건지 확인
 		String best = request.getParameter("best");
+		//스크랩게시판에서넘어온것
+		String scrap = request.getParameter("scrap");
 	//	String notice = request.getParameter("notice");
 		
 		
@@ -48,22 +59,16 @@ public class View implements CommandProcess{
 		file.setCategory(category);
 		//파일리스트 가져오기
 		fileList = fd.getImage(file); //번호와 category를 세팅한걸 넣어서 맞는 이미지 가져오기
+		
+		//request.setAttribute("notice", notice);
+		
+	
+		request.setAttribute("scrap", scrap);
+		request.setAttribute("id", id);
+		request.setAttribute("best", best);
 		request.setAttribute("fileList", fileList); //list
 		request.setAttribute("board", board);
 		request.setAttribute("pageNum", pageNum);
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
-		request.setAttribute("id", id);
-		request.setAttribute("best", best);
-		//request.setAttribute("notice", notice);
-		
-		//SessionChk-MainAction.java
-		if(id!=null) {
-			MemberDao md =MemberDao.getInstance();
-			Member member = md.select(id);
-			request.setAttribute("member", member);
-		}
-		
 		return "viewBoard.jsp";
 	}
 

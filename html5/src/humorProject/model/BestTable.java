@@ -1,4 +1,4 @@
-package humorProject.dao;
+package humorProject.model;
 
 public class BestTable {
 	private String id ;

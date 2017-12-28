@@ -1,4 +1,4 @@
-package humorProject.dao;
+package humorProject.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

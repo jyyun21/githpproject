@@ -2,7 +2,7 @@
 <configuration>
 	<properties resource="db.properties" /> <!-- db접속을 위한 설정이 담겨있는 파일 -->
 	<typeAliases>
-		<typeAlias alias="boardReport" type="humorProject.dao.BoardReport" /> <!-- 별칭, 별명 -->
+		<typeAlias alias="boardReport" type="humorProject.model.BoardReport" /> <!-- 별칭, 별명 -->
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

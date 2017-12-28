@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import humorProject.model.BestTable;
+
 public class BestTableDao {
 	private static BestTableDao instance = new BestTableDao();
 	private BestTableDao() {

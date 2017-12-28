@@ -4,8 +4,10 @@
 <mapper namespace="boardScrapns">
 	<resultMap type="boardScrap"		id="ResultMap">
 		<result property="num"		column="num" />
+		<result property="id"		column="id" />
 		<result property="category"		column="category" />
 		<result property="board_num"		column="board_num" />
+		<result property="folder"		column="folder" />
 		<result property="startRow"		column="startRow" />
 		<result property="endRow"		column="endRow" />
 	</resultMap>
@@ -13,12 +15,16 @@
 		select nvl(max(num),0) from board_scrap
 	</select>
 	<insert id="write" parameterType="boardScrap">
-		insert into board_scrap values(#{num}, #{category}, #{board_num})	
+		insert into board_scrap values(#{num}, #{id}, #{category}, #{board_num}, #{folder})	
 	</insert>
-	<select id="list" parameterType="boardScrap" resultType="boardScrap">
-		select * from (select rowNum rn, a.* from ( select * from board_scrap order by num desc ) a ) where rn between ${startRow} and ${endRow}
+	<select id="list1" parameterType="boardScrap" resultType="boardScrap">
+		select * from board_scrap where id = #{id} order by num desc
+	</select>
+	<select id="list2" parameterType="boardScrap" resultType="boardScrap">
+		select * from (select rowNum rn, a.* from ( select * from board_scrap where id = #{id} order by num desc ) a ) where rn between ${startRow} and ${endRow}
 	</select>
 	<select id="total" resultType="int">
-		select count(*) from board_scrap
+		select count(*) from board_scrap where id = #{id}
 	</select>
+	
 </mapper>

@@ -56,4 +56,5 @@
 	<select id="getBestNum" parameterType="int" resultType="int">
 		select best from boardFree where num = #{num}
 	</select>
+
 </mapper>

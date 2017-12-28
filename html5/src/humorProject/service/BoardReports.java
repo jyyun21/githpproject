@@ -3,8 +3,8 @@ package humorProject.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import humorProject.dao.BoardReport;
 import humorProject.dao.BoardReportDao;
+import humorProject.model.BoardReport;
 
 public class BoardReports implements CommandProcess{
 	@Override

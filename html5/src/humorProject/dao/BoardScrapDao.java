@@ -9,6 +9,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import humorProject.model.BoardBest;
+import humorProject.model.BoardScrap;
+
 public class BoardScrapDao {
 	private static BoardScrapDao instance = new BoardScrapDao();
 
@@ -29,24 +32,25 @@ public class BoardScrapDao {
 	}
 
 	/////////////////////////////////////////////
-	public int write(BoardBest bb) {
+	public int write(BoardScrap bs) {
 		int result = 0;
 		int num = 0;
 		try {
 			//최고 큰 수 구하기
 			num = (int) session.selectOne("boardScrapns.getMaxNum");
-			bb.setNum(num+1);
-			result = session.insert("boardScrapns.write", bb);
+			bs.setNum(num+1);
+			//write
+			result = session.insert("boardScrapns.write", bs);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return result;
 	}
-	public List<BoardBest> list(BoardBest boardBest){
-		List<BoardBest> list = null;
+	public List<BoardScrap> list(BoardScrap bs){
+		List<BoardScrap> list = null;
 		try {
 			//boardBest에 startRow와 endRow를 입력해서 넣어줌, 그 값을 이용하기 위해
-			list = session.selectList("boardScrapns.list", boardBest);
+			list = session.selectList("boardScrapns.list2", bs);
 		} catch (Exception e) { System.out.println(e.getMessage());
 		}
 		return list;
@@ -59,5 +63,7 @@ public class BoardScrapDao {
 		}
 		return total;
 	}
+	//////////////////
+
 
 }

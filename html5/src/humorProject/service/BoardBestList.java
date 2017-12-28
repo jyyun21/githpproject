@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import humorProject.dao.Board;
-import humorProject.dao.BoardBest;
 import humorProject.dao.BoardBestDao;
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
 import humorProject.dao.BoardNoticeDao;
 import humorProject.dao.MemberDao;
+import humorProject.model.Board;
+import humorProject.model.BoardBest;
 import humorProject.model.Member;
 
 public class BoardBestList implements CommandProcess {
@@ -22,13 +22,13 @@ public class BoardBestList implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) {
 		//SessionChk-MainAction.java에서 가져옴. 닉네임받아오기위해서
-				HttpSession session = request.getSession();
-				String id = (String)session.getAttribute("id");
-				if(id != null ) {
-				MemberDao md = MemberDao.getInstance();
-				Member member = md.select(id);
-				request.setAttribute("member", member);
-				}
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		if(id != null ) {
+			MemberDao md = MemberDao.getInstance();
+			Member member = md.select(id);
+			request.setAttribute("member", member);
+		}
 		
 		BoardBestDao bestDao = BoardBestDao.getInstance();
 		BoardDao bd = null;
@@ -53,6 +53,8 @@ public class BoardBestList implements CommandProcess {
 		int endPage = startPage + PAGEPERBLOCK-1;
 		if(endPage>totPage) endPage = totPage; //마지막 페이지 수 변경, 34페이지까지있는 게시판이라면 이 코드가 없으면 40페이지까지 표시된다.
 		int tot = total - startRow +1;
+		
+		
 		BoardBest boardBest = new BoardBest(); //첫열과 끝열을 정함 
 		boardBest.setStartRow(startRow);
 		boardBest.setEndRow(endRow);

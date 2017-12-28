@@ -195,10 +195,10 @@
                 <a href="#" id="btn_topmenu_control_panel"></a>
             </div>
             <div id="logo_line_search_div">
-                <form action="#" method="get" name="up_search" id="search" onsubmit="#">
+                <form action="search.do" method="get" name="up_search" id="search" onsubmit="#">
                     <input type="hidden" name="kind" value="search">
                     <select name="keyfield">
-                        <option value="subject" selected="">제목</option>
+                        <option value="subject" selected="selected">제목</option>
                         <option value="name">이름</option>
                     </select>
                     <input type="text" size="20" name="keyword" value="">
@@ -266,7 +266,7 @@
 	 	  		<li><a href="view.do" class="submenuLink">회원정보 조회</a></li>
 	 	  		<li><a href="updateForm.do" class="submenuLink">회원정보 수정</a></li>
 	 	  		<li><a href="#" class="submenuLink">쓴 글 보기</a></li>
-	 	  		<li><a href="#" class="submenuLink">스크랩보기</a></li>
+	 	  		<li><a href="boardScrapList.do" class="submenuLink">스크랩보기</a></li>
 	 	  		<li><a href="deleteForm.do" class="submenuLink">회원 탈퇴</a></li>
 	 	  	</ul>
 	 	 <%
