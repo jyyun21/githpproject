@@ -52,6 +52,10 @@
 			$('#scrapClick').click(function() {
 				location.href='clickbest.do?num=${board.num}&pageNum=${pageNum }&category=${board.category }&scrap=scrap'; 
 			});
+			//검색에서 추천
+			$('#searchClick').click(function() {
+				location.href='clickbest.do?num=${board.num}&pageNum=${pageNum }&category=${board.category }&search=search&keyword=${keyword}&keyfield=${keyfield}'; 
+			});
 			//스크랩하기
 			$('#scrap').click(function() {
 				//location.href='boardScrap.do?num=${board.num}&pageNum=${pageNum }&category=${board.category }';
@@ -87,13 +91,18 @@
 				</c:if>
 				<pre width="600" id="pre" style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;">${board.content }</pre>
 				<span >
-					<c:if test="${best ==null &&scrap ==null}">
+					<c:if test="${best ==null &&scrap ==null &&search==null}">
 						<button id="normalClick" >추천
 						<img alt="" src="thumb.PNG" width="20px">
 						</button>
 					</c:if>
 					<c:if test="${best!=null }">
 						<button id="bestClick" >추천
+						<img alt="" src="thumb.PNG" width="20px">
+						</button>
+					</c:if>
+					<c:if test="${search!=null }">
+						<button id="searchClick" >추천
 						<img alt="" src="thumb.PNG" width="20px">
 						</button>
 					</c:if>
@@ -120,7 +129,10 @@
 	<c:if test="${scrap != null}">
 	<a href="boardScrapList.do?pageNum=${pageNum }&category=${board.category}&head=${board.head}" style="float: left;">목록</a>
 	</c:if>
-	<c:if test="${best ==null && scrap ==null }">
+	<c:if test="${search != null}">
+	<a href="search.do?pageNum=${pageNum }&category=${board.category}&keyword=${keyword}&keyfield=${keyfield}" style="float: left;">목록</a>
+	</c:if>
+	<c:if test="${best ==null && scrap ==null  &&search==null}">
 	<a href="boardList.do?pageNum=${pageNum }&category=${board.category}&head=${board.head}" style="float: left;">목록</a>
 	</c:if>
 	

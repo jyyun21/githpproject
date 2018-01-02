@@ -33,6 +33,14 @@ public class View implements CommandProcess{
 		String best = request.getParameter("best");
 		//스크랩게시판에서넘어온것
 		String scrap = request.getParameter("scrap");
+		//검색 게시판에서 넘어옴
+		String search = request.getParameter("search");
+		if(search !=null) {
+			String keyword = request.getParameter("keyword");
+			String keyfield = request.getParameter("keyfield");
+			request.setAttribute("keyword", keyword);
+			request.setAttribute("keyfield", keyfield);
+		}
 	//	String notice = request.getParameter("notice");
 		
 		
@@ -63,6 +71,8 @@ public class View implements CommandProcess{
 		//request.setAttribute("notice", notice);
 		
 	
+	
+		request.setAttribute("search", search);
 		request.setAttribute("scrap", scrap);
 		request.setAttribute("id", id);
 		request.setAttribute("best", best);

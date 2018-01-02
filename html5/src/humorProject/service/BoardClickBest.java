@@ -56,13 +56,20 @@ public class BoardClickBest implements CommandProcess{
 		}
 		String best = request.getParameter("best");
 		String scrap = request.getParameter("scrap");
-		
+		String search = request.getParameter("search");
+		if(search !=null) {
+			String keyword = request.getParameter("keyword");
+			String keyfield = request.getParameter("keyfield");
+			request.setAttribute("keyword", keyword);
+			request.setAttribute("keyfield", keyfield);
+		}
 		request.setAttribute("select", select); //result = 0이면 아직 추천안함. 1이면 추천을 이미했음
 		request.setAttribute("category", category);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("num", num);
 		request.setAttribute("best", best);
 		request.setAttribute("scrap", scrap);
+		request.setAttribute("search", search);
 		
 		//Num. pageNum
 		return "clickBest.jsp";

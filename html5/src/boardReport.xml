@@ -8,13 +8,20 @@
 		<result property="category"		column="category" />
 		<result property="r_type"		column="r_type" />
 		<result property="r_content"		column="r_content" />
+		<result property="startRow"		column="startRow" />
+		<result property="endRow"		column="endRow" />
+		<result property="block"		column="block" />
 	</resultMap>
-
 	<insert id="write" parameterType="boardReport">
-		insert into report values(#{num}, #{id}, #{category}, #{r_type}, #{r_content})	
+		insert into report values(#{num}, #{id}, #{category}, #{r_type}, #{r_content},'n')	
 	</insert>
 	<select id="list" parameterType="boardReport" resultType="boardReport">
-		select * from report where num=#{num} and category = #{category}
+		select * from report order by num desc
 	</select>
-	
+	<update id="block" parameterType="boardReport">
+		update report set block='y' where num = #{num} and category=#{category}
+	</update>
+	<update id="unblock" parameterType="boardReport">
+		update report set block='n' where num = #{num} and category=#{category}
+	</update>
 </mapper>

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-짠? 검색한 내용은 ? ${keyword } 검색조건은 ? ${keyfield }
+<h2>짠? 검색한 내용은 ? ${keyword } 검색조건은 ? ${keyfield }</h2>
 <table>
 	<tr>
 		<td>번호</td>
@@ -19,24 +19,44 @@
 		<td>조회</td>
 		<td>추천</td>
 	</tr>
-		<c:forEach var="board" items="${boardList }">
+		<c:forEach var="board" items="${list }">
 			<c:if test="${board.del.equals(\"n\") }">
 				<tr>
 					<td>${board.num }</td>
 					<td>${board.category }</td>
 					<td align="left" style="margin-left: 10px;"><a
 						title="${board.content }"
-						href='viewBoard.do?num=${board.num }&pageNum=${pageNum }
-								&category=${board.category}'>${board.subject }</a>
+						href="viewBoard.do?num=${board.num }&pageNum=${pageNum }&category=${board.category}&search=search&keyword=${keyword}&keyfield=${keyfield}">${board.subject }</a>
 					</td>
 					<td>${board.id }</td>
-					<td>${board.reg_date }</td>
+					<td>${board.time }</td>
 					<td>${board.readcount }</td>
 					<td>${board.best }</td>
 				</tr>
 			</c:if>
 		</c:forEach>
 	</table>
-없나요?
+		<span style="clear: both; text-align: center">
+			<c:if test="${startPage> PAGEPERBLOCK}">
+				<a href="search.do?pageNum=${startPage - 1 }&category=${category}&keyword=${keyword}&keyfield=${keyfield}">[이전]</a>
+			</c:if>
+
+			<c:forEach var="i" begin="${startPage }" end="${endPage }">
+				<c:if test="${i==currentPage }">
+					<!-- 같은페이지면 색깔은 다르게 -->
+					<a href="search.do?pageNum=${i }&category=${category}&keyword=${keyword}&keyfield=${keyfield}" style="color: pink">[${i }] </a>
+				</c:if>
+
+				<c:if test="${i!= currentPage }">
+					<a href="search.do?pageNum=${i }&category=${category}&keyword=${keyword}&keyfield=${keyfield}">[${i }] </a>
+				</c:if>
+			</c:forEach>
+
+			<c:if test="${endPage < totPage }">
+				<a href="search.do?pageNum=${endPage + 1 }&category=${category}&keyword=${keyword}&keyfield=${keyfield}">[다음]</a>
+				<!-- 지금 endPage 가10이면 다음을 누르면 11페이지를 보여준다 -->
+			</c:if>
+
+		</span>
 </body>
 </html>

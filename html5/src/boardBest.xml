@@ -18,6 +18,9 @@
 	<select id="list" parameterType="boardBest" resultType="boardBest">
 		select * from (select rowNum rn, a.* from ( select * from board_best order by num desc ) a ) where rn between ${startRow} and ${endRow}
 	</select>
+	<select id="mainList" parameterType="boardBest" resultType="boardBest">
+		select * from (select rowNum rn, a.* from ( select * from board_best order by num desc ) a ) where rn between 1 and 3
+	</select>
 	<select id="total" resultType="int">
 		select count(*) from board_best
 	</select>

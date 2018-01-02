@@ -46,7 +46,13 @@
 				</c:forEach>
 			</c:if>
 			<c:forEach var="board" items="${list }">
-				<c:if test="${board.del.equals(\"n\") }">
+				<c:if test="${board.block.equals(\"y\") }">
+					<tr>
+						<td>${board.num }</td>
+						<td colspan="5">블라인드 상태의 게시물입니다.</td>
+					</tr>
+				</c:if>
+				<c:if test="${board.del.equals(\"n\")&& board.block.equals(\"n\") }">
 					<tr>
 						<td>${board.num }</td>
 						<td align="left" style="margin-left: 10px;"><a

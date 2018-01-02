@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import humorProject.model.Board;
+import humorProject.model.BoardReport;
 
 public class BoardFreeDao extends BoardDao {
 	private static BoardFreeDao instance = new BoardFreeDao();
@@ -19,6 +20,7 @@ public class BoardFreeDao extends BoardDao {
 	}
 
 	private static SqlSession session;
+	private static SqlSession sessionReport;
 	private static SqlSession sessionFile;
 	static { // static 변수 초기화 블럭
 		// 자유게시판 Board
@@ -29,6 +31,15 @@ public class BoardFreeDao extends BoardDao {
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
+		//report
+				try {
+					Reader reader1 = Resources.getResourceAsReader("configuration_boardReport.xml");
+					SqlSessionFactory ssf1 = new SqlSessionFactoryBuilder().build(reader1); // sqlsession을 만든다.
+					sessionReport = ssf1.openSession(true); // 이걸 써줘야 db에서 자동 commit이 된다.
+				} catch (IOException e) {
+					System.out.println(e.getMessage());
+				}
+		
 		//file DB
 				try {
 					Reader reader2 = Resources.getResourceAsReader("configuration_file.xml");
@@ -148,5 +159,40 @@ public class BoardFreeDao extends BoardDao {
 		}
 		return result;
 	}
-	
+	public List<Board> search(String keyword, String keyfield){
+		List<Board> list = null;
+		try {
+			if(keyfield.equals("subject"))
+				list = session.selectList("searchSub", keyword);
+			else if(keyfield.equals("id"))
+				list = session.selectList("searchId", keyword);
+		} catch (Exception e) {System.out.println(e.getMessage());
+		}
+		return list;
+	}
+	public List<Board> search2(String keyfield, Board board){
+		List<Board> list = null;
+		try {
+			if(keyfield.equals("subject"))
+				list = session.selectList("searchSub2", board);
+			else if(keyfield.equals("id"))
+				list = session.selectList("searchId2", board);
+		} catch (Exception e) {System.out.println(e.getMessage());
+		}
+		return list;
+	}
+	public void setBlock(int num, BoardReport br) {
+		try {
+			session.update("block", num);
+			sessionReport.update("block",br);
+		} catch (Exception e) {
+		}
+	}
+	public void setUnBlock(int num, BoardReport br) {
+		try {
+			session.update("unblock", num);
+			sessionReport.update("unblock",br);
+		} catch (Exception e) {
+		}
+	}
 }

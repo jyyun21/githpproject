@@ -105,7 +105,13 @@ alter table boardFile add constraint fk_file foreign key(num) references board(n
 ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
 ALTER TABLE boardFile DROP COLUMN category;
 --alter table board_best add(board_num number);
-
+---블라인드처리
+alter table board add (block varchar2(5));
+alter table boardFree add (block varchar2(5));
+alter table report add (block varchar2(5));
+update board set block ='n';
+update boardFree set block ='n';
+update report set block ='n';
 
 update boardfile set num=6 where num = 0;
 

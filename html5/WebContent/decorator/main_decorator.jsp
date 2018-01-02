@@ -199,7 +199,11 @@
                     <input type="hidden" name="kind" value="search">
                     <select name="keyfield">
                         <option value="subject" selected="selected">제목</option>
-                        <option value="name">이름</option>
+                        <option value="id">아이디</option>
+                    </select>
+                    <select name="category">
+                        <option value="humor" selected="selected">유머</option>
+                        <option value="free">자유</option>
                     </select>
                     <input type="text" size="20" name="keyword" value="">
                     <input type="image" name="Submit" value="검색" src="images/search.png">
@@ -222,8 +226,20 @@
                 <a href="joinForm.do" target="_top">회원가입</a>
             </div>
         </div>
-      <%/* 로그인 했을 때  */
- 	  }else{
+      <%/* master일때 */
+ 	  }else if(id.equals("master")){
+ 	  %>
+	 	  <div id="login_div" >
+            <form name="login" method="post" action="login.do" target="_top">
+                	<h2 style="text-align: left;">관리자님 반갑습니다.</h2>
+            </form>
+         	 <div id="login_user_menu">
+                <a href="logout.do" target="_top">로그아웃</a>
+            </div>
+        </div> 
+ 	  <%
+ 	  }/* 로그인 했을 때  */
+ 	  else {
  	  %>
 	 	  <div id="login_div" >
             <form name="login" method="post" action="login.do" target="_top">
@@ -242,7 +258,6 @@
         
  <!-- 메뉴시작------------------------------------------------------------------------------------->       
 
-
 <nav id="topMenu" >
 	 <ul> <li class="topMenuLi"><a class="menuLink" href="boardBestList.do">베스트게시판</a></li>
 	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=humor">유머게시판</a></li>
@@ -258,8 +273,17 @@
 	 	  		<li><a href="loginForm.do" class="submenuLink">로그인</a></li>
 	 	  		<li><a href="joinForm.do" class="submenuLink">회원가입</a></li>
 	 	  	</ul>
-	 	  <%/* 로그인 했을 때  */
-	 	  }else{
+	 	  <%/* 관리자일때  */
+	 	  }else if(id.equals("master")){
+	 	  %>
+	 	  <li class="topMenuLi"><a class="menuLink" href="#">마이페이지</a>
+	 	  <ul class="submenu"> 
+	 	  		<li><a href="noticeForm.do" class="submenuLink">공지 쓰기</a></li>
+	 	  		<li><a href="viewReport.do" class="submenuLink">신고 보기</a></li>
+	 	  	</ul>
+	 	 <%
+	 	  /* 로그인 했을 때  */
+	 	  } else{
 	 	  %>
 	 	  <li class="topMenuLi"><a class="menuLink" href="#">마이페이지</a>
 	 	  <ul class="submenu"> 

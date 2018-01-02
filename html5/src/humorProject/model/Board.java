@@ -22,7 +22,21 @@ public class Board { //DTO에서는 맵핑만 하자 코드는 다른곳에서 �
 	private int startRow;
 	private int endRow;
 	private int boardBestNum;
+	private String keyword;
+	private String block;
 	
+	public String getBlock() {
+		return block;
+	}
+	public void setBlock(String block) {
+		this.block = block;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	public int getBoardBestNum() {
 		return boardBestNum;
 	}

@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<c:if test="${select ==0 &&best ==null && scrap ==null }">
+	<c:if test="${select ==0 &&best ==null && scrap ==null &&search==null}">
 		<script type="text/javascript">
 			alert("추천되었습니다.");	
 			location.href='viewBoard.do?num=${num }&pageNum=${pageNum }&check="check"&category=${category}';
@@ -25,6 +25,12 @@
 		<script type="text/javascript">
 			alert("추천되었습니다.");	
 			location.href='viewBoard.do?num=${num }&pageNum=${pageNum }&check="check"&category=${category}&scrap=scrap';
+		</script>
+	</c:if>
+	<c:if test="${select ==0 && search !=null}">
+		<script type="text/javascript">
+			alert("추천되었습니다.");	
+			location.href='viewBoard.do?num=${num }&pageNum=${pageNum }&category=${category}&search=search&keyword=${keyword}&keyfield=${keyfield}&check=check';
 		</script>
 	</c:if>
 	<c:if test="${select ==1 }">

@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import humorProject.model.Board;
 import humorProject.model.BoardBest;
 
 public class BoardBestDao {
@@ -60,6 +61,15 @@ public class BoardBestDao {
 		} catch (Exception e) { System.out.println(e.getMessage());
 		}
 		return total;
+	}
+	public List<BoardBest> getMainList() {
+		List<BoardBest> list = null;
+		try {
+			list = session.selectList("mainList");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return list;
 	}
 
 }

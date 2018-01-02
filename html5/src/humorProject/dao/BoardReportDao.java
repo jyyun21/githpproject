@@ -40,11 +40,11 @@ public class BoardReportDao {
 		}
 		return result;
 	}
-	public List<BoardReport> list(BoardReport br){
+	public List<BoardReport> list(){
 		List<BoardReport> list = null;
 		try {
 			//boardBest에 startRow와 endRow를 입력해서 넣어줌, 그 값을 이용하기 위해
-			list = session.selectList("list", br);
+			list = session.selectList("list");
 		} catch (Exception e) { System.out.println(e.getMessage());
 		}
 		return list;

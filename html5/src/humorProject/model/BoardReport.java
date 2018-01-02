@@ -6,6 +6,27 @@ public class BoardReport {
 	private String category;
 	private String r_type;
 	private String r_content;
+	private int startRow;
+	private int endRow;
+	private String block;
+	public String getBlock() {
+		return block;
+	}
+	public void setBlock(String block) {
+		this.block = block;
+	}
+	public int getStartRow() {
+		return startRow;
+	}
+	public void setStartRow(int startRow) {
+		this.startRow = startRow;
+	}
+	public int getEndRow() {
+		return endRow;
+	}
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
+	}
 	public int getNum() {
 		return num;
 	}
