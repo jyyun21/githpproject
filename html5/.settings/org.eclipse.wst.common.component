@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="humorProject">
+    <wb-module deploy-name="html5">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="humorProject"/>
-        <property name="java-output-path" value="/humorProject/build/classes"/>
+        <property name="java-output-path" value="/html5/build/classes"/>
+        <property name="context-root" value="html5"/>
     </wb-module>
 </project-modules>
