@@ -77,7 +77,7 @@
     
     
  /*로고, 검색창, 로그인  */   
-   #logo_line_container{width:100%;text-align:center;padding: 5px 0;width:1005px;margin:0 auto}
+   #logo_line_container{width:100%;text-align:center;padding: 0px 0;width:1005px;margin:0 auto}
 
 
 #logo_line{
@@ -160,6 +160,11 @@
   color: #777;
   margin-top: 9px;
 }
+#login_name_view{
+  font-size:18px;
+ font-family: 'hanna';
+ text-align: left;
+}
 
 
 #login_div a:link,#login_div a:visited, #login_div a:hover{color: inherit;text-decoration:none;}
@@ -231,7 +236,7 @@
  	  %>
 	 	  <div id="login_div" >
             <form name="login" method="post" action="login.do" target="_top">
-                	<h2 style="text-align: left;">관리자님 반갑습니다.</h2>
+                	<div id="login_name_view" >관리자님 반갑습니다.</div>
             </form>
          	 <div id="login_user_menu">
                 <a href="logout.do" target="_top">로그아웃</a>
@@ -243,7 +248,7 @@
  	  %>
 	 	  <div id="login_div" >
             <form name="login" method="post" action="login.do" target="_top">
-                	<h2 style="text-align: left;">${member==null ? '손' : member.name }님 반갑습니다.</h2>
+                	<div id="login_name_view">${member==null ? '손' : member.name }님 반갑습니다.</div>
             </form>
          	 <div id="login_user_menu">
                 <a href="logout.do" target="_top">로그아웃</a>
@@ -257,43 +262,55 @@
        
         
  <!-- 메뉴시작------------------------------------------------------------------------------------->       
-
 <nav id="topMenu" >
 	 <ul> <li class="topMenuLi"><a class="menuLink" href="boardBestList.do">베스트게시판</a></li>
 	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=humor">유머게시판</a></li>
 	 	  <li class="topMenuLi"><a class="menuLink" href="boardList.do?category=free">자유게시판</a></li>
-	 	  <li class="topMenuLi"><a class="menuLink" href="noticeForm.do">공지</a></li> 
 	 	  
 	 	  <%/* 로그인 했을때 와 안했을 때 메뉴구성 변경 - 로그인 안했을 때*/
 	 	  id = (String)session.getAttribute("id");
 	 		if(id == null || id.equals("")){
 	 	  %>
+	 	  <li class="topMenuLi"><a class="menuLink" href="noticeForm.do">공지</a></li> 
 	 	  <li class="topMenuLi"><a class="menuLink" href="#">접속하기</a>
 	 	  	<ul class="submenu"> 
 	 	  		<li><a href="loginForm.do" class="submenuLink">로그인</a></li>
 	 	  		<li><a href="joinForm.do" class="submenuLink">회원가입</a></li>
 	 	  	</ul>
-	 	  <%/* 관리자일때  */
-	 	  }else if(id.equals("master")){
+	 	  <%/* 로그인 했을 때  */
+	 	  }else{
+	 		  if(id.equals("master") ){//마스터의 경우 관리자페이지
+	 			  
 	 	  %>
-	 	  <li class="topMenuLi"><a class="menuLink" href="#">마이페이지</a>
-	 	  <ul class="submenu"> 
-	 	  		<li><a href="noticeForm.do" class="submenuLink">공지 쓰기</a></li>
-	 	  		<li><a href="viewReport.do" class="submenuLink">신고 보기</a></li>
-	 	  	</ul>
-	 	 <%
-	 	  /* 로그인 했을 때  */
-	 	  } else{
-	 	  %>
+	 	  <li class="topMenuLi"><a class="menuLink" href="">관리자페이지</a>
+	 	  	<ul class="submenu"> 
+	 	  		<li><a href="memberList.jsp" class="submenuLink">회원 목록</a></li>
+	 	  		<li><a href="#" class="submenuLink">신고 내용</a></li>
+	 	  		<li><a href="noticeForm.do" class="submenuLink">공지 작성</a></li>
+	 	 	 </ul>
+	 	  </li> 
 	 	  <li class="topMenuLi"><a class="menuLink" href="#">마이페이지</a>
 	 	  <ul class="submenu"> 
 	 	  		<li><a href="view.do" class="submenuLink">회원정보 조회</a></li>
 	 	  		<li><a href="updateForm.do" class="submenuLink">회원정보 수정</a></li>
 	 	  		<li><a href="#" class="submenuLink">쓴 글 보기</a></li>
-	 	  		<li><a href="boardScrapList.do" class="submenuLink">스크랩보기</a></li>
+	 	  		<li><a href="#" class="submenuLink">스크랩보기</a></li>
 	 	  		<li><a href="deleteForm.do" class="submenuLink">회원 탈퇴</a></li>
-	 	  	</ul>
+	 	  </ul>
 	 	 <%
+	 		  }else{//일반사용자의 경우 글쓰기 페이지 writeForm.do
+	 	 %>
+ 	 	 <li class="topMenuLi"><a class="menuLink" href="writeForm.do">글쓰기</a></li> 
+ 	 	 <li class="topMenuLi"><a class="menuLink" href="#">마이페이지</a>
+ 	  	 <ul class="submenu"> 
+	 	  		<li><a href="view.do" class="submenuLink">회원정보 조회</a></li>
+	 	  		<li><a href="updateForm.do" class="submenuLink">회원정보 수정</a></li>
+	 	  		<li><a href="#" class="submenuLink">쓴 글 보기</a></li>
+	 	  		<li><a href="#" class="submenuLink">스크랩보기</a></li>
+	 	  		<li><a href="deleteForm.do" class="submenuLink">회원 탈퇴</a></li>
+	 	  </ul>
+	 	 <%
+	 	 	 }
 	 	  }
 	 	 %>
 	 	  </li> 

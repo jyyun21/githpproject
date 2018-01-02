@@ -3,6 +3,14 @@ package humorProject.dao;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.Configuration;
@@ -97,5 +105,80 @@ public class MemberDao {
 		}
 		return result;
 	}
-	
+	//리스트용 임시. connection 바꾸기
+
+		private Connection getConnection() {
+			Connection conn = null;
+			try {
+				Context ctx = new InitialContext();
+				DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/OracleDB");
+				conn = ds.getConnection();
+			} catch (Exception e) {
+				System.out.println("연결실패: "+ e.getMessage());
+			}
+			return conn;
+		}
+		public List<Member> list(int startRow, int endRow) {
+			List<Member> list= new ArrayList<>();
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			//String sql = "select * from member2 ";
+			String sql = "select * from (select rowNum rn, a.* from "
+					+ "(select * from hpmember order by reg_date desc) a) "
+					+ "where rn between ? and ? ";
+			try {
+				conn=getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					Member member = new Member();
+					member.setId(rs.getString("id"));
+					member.setPassword(rs.getString("password"));
+					member.setName(rs.getString("name"));
+					member.setAddress(rs.getString("address"));
+					member.setTel(rs.getString("tel"));
+					member.setReg_date(rs.getDate("reg_date"));
+					member.setDel(rs.getString("del"));
+					list.add(member);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}finally {
+				try {if(rs !=null)rs.close();
+					 if(pstmt !=null)pstmt.close();
+				     if(conn !=null)conn.close();
+				} catch (Exception e) {
+				}
+			}
+			return list;
+			
+		}
+		public int total() {
+			int result = 0;
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "select count(*) from hpmember";
+			try {
+				conn=getConnection();
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					result = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}finally {
+				try {if(rs !=null)rs.close();
+					 if(pstmt !=null)pstmt.close();
+				     if(conn !=null)conn.close();
+				} catch (Exception e) {
+				}
+			}
+			return result;
+			
+		}
 }
