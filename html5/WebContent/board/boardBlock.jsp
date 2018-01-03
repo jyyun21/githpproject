@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,8 +9,17 @@
 </head>
 <body>
 블락 완료
+<c:if test="${result >0 }">
 <script type="text/javascript">
+	alert("성공");
 	location.href="viewReport.do";
 </script>
+</c:if>
+<c:if test="${result ==0 }">
+<script type="text/javascript">
+	alert("블럭 실패");
+	history.go(-1);
+</script>
+</c:if>
 </body>
 </html>

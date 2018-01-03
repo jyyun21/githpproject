@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import humorProject.dao.BoardDao;
 import humorProject.dao.BoardFreeDao;
+import humorProject.dao.BoardReportDao;
 import humorProject.model.BoardReport;
 
 public class BoardBlock implements CommandProcess {
@@ -20,14 +21,20 @@ public class BoardBlock implements CommandProcess {
 		else 
 			bd = BoardDao.getInstance();
 		
+		BoardReportDao reportDao = BoardReportDao.getInstance();
 		BoardReport br = new BoardReport();
 		br.setNum(num);
 		br.setCategory(category);
+		int result = 0;
 		if(unblock==null) {
-			bd.setBlock(num, br);
+			result = bd.setBlock(num, br);
+			reportDao.setBlock(num, br);
 		}
-		else
-			bd.setUnBlock(num, br);
+		else {
+			result = bd.setUnBlock(num, br);
+			reportDao.setUnBlock(num, br);
+		}
+		request.setAttribute("result", result);
 		return "boardBlock.jsp";
 	}
 

@@ -23,7 +23,7 @@
 	<select id="list2" parameterType="boardScrap" resultType="boardScrap">
 		select * from (select rowNum rn, a.* from ( select * from board_scrap where id = #{id} order by num desc ) a ) where rn between ${startRow} and ${endRow}
 	</select>
-	<select id="total" resultType="int">
+	<select id="total" parameterType="string" resultType="int">
 		select count(*) from board_scrap where id = #{id}
 	</select>
 	

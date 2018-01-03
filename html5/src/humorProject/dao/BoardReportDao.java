@@ -49,5 +49,16 @@ public class BoardReportDao {
 		}
 		return list;
 	}
-	
+	public void setBlock(int num, BoardReport br) {
+		try {
+			session.update("block",br);
+		} catch (Exception e) {
+		}
+	}
+	public void setUnBlock(int num, BoardReport br) {
+		try {
+			session.update("unblock",br);
+		} catch (Exception e) {
+		}
+	}
 }

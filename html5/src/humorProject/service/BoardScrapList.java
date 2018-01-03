@@ -44,7 +44,7 @@ public class BoardScrapList implements CommandProcess {
 		int currentPage =Integer.parseInt(pageNum); //현재 페이지 1,  2, 3페이지
 		int startRow = (currentPage -1)*ROWPERPAGE +1;// 1~10, 11~20, 21~30
 		int endRow = startRow + ROWPERPAGE -1;
-		int total = bsDao.total(); //총 글의 개수
+		int total = bsDao.total(id); //총 글의 개수
 		int totPage = (int)Math.ceil((double)total/ROWPERPAGE);//한 페이지당 글을 표시할 수 있는 개수로 나누면 총 페이지개수가 나옴 
 		int startPage = currentPage -(currentPage-1)%PAGEPERBLOCK; //1,2,3,4,5,6,7,8,9,0 || 11,12,13,14,15,16,17,18,19,20 페이지 수 10개씩 표시되게 한다.
 													//7페이지면 1~10, 15페이지면 11~20, 28페이지면 21~30 페이지가 게시판밑에 표시됨

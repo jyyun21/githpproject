@@ -73,6 +73,7 @@ create table boardFile (
 );
 select * from boardfile;
 
+
 create table board_scrap(
 	num number,
 	id varchar2(20),
@@ -103,6 +104,7 @@ insert into boardBest values(0, 'master', 'Besttemp', '파일 임시', 0, sysdat
 update boardFile set category = 'humor';
 alter table boardFile add constraint fk_file foreign key(num) references board(num);
 ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
+alter table boardFile drop column block;
 ALTER TABLE boardFile DROP COLUMN category;
 --alter table board_best add(board_num number);
 ---블라인드처리
@@ -112,6 +114,7 @@ alter table report add (block varchar2(5));
 update board set block ='n';
 update boardFree set block ='n';
 update report set block ='n';
+update report set block ='y' where num= 39;
 
 update boardfile set num=6 where num = 0;
 

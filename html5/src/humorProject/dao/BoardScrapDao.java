@@ -55,10 +55,10 @@ public class BoardScrapDao {
 		}
 		return list;
 	}
-	public int total() {
+	public int total(String id) {
 		int total = 0;
 		try {
-			total = (int) session.selectOne("boardScrapns.total");
+			total = (int) session.selectOne("boardScrapns.total", id);
 		} catch (Exception e) { System.out.println(e.getMessage());
 		}
 		return total;

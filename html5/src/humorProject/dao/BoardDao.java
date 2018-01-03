@@ -175,19 +175,21 @@ public class BoardDao {
 		}
 		return list;
 	}
-	public void setBlock(int num, BoardReport br) {
+	public int setBlock(int num, BoardReport br) {
+		int result = 0;
 		try {
-			session.update("block", num);
-			sessionReport.update("block",br);
+			result = session.update("block", num);
 		} catch (Exception e) {
 		}
+		return result;
 	}
-	public void setUnBlock(int num, BoardReport br) {
+	public int setUnBlock(int num, BoardReport br) {
+		int result = 0;
 		try {
-			session.update("unblock", num);
-			sessionReport.update("unblock",br);
+			result = session.update("unblock", num);
 		} catch (Exception e) {
 		}
+		return result;
 	}
 	
 	
