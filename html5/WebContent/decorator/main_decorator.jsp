@@ -266,7 +266,7 @@
 	 	  id = (String)session.getAttribute("id");
 	 		if(id == null || id.equals("")){
 	 	  %>
-	 	  <li class="topMenuLi"><a class="menuLink" href="noticeForm.do">공지</a></li> 
+	 	  <li class="topMenuLi"><a class="menuLink" href="writeForm.do">글쓰기</a></li> 
 	 	  <li class="topMenuLi"><a class="menuLink" href="#">접속하기</a>
 	 	  	<ul class="submenu"> 
 	 	  		<li><a href="loginForm.do" class="submenuLink">로그인</a></li>
@@ -280,7 +280,7 @@
 	 	  <li class="topMenuLi"><a class="menuLink" href="">관리자페이지</a>
 	 	  	<ul class="submenu"> 
 	 	  		<li><a href="memberList.jsp" class="submenuLink">회원 목록</a></li>
-	 	  		<li><a href="#" class="submenuLink">신고 내용</a></li>
+	 	  		<li><a href="viewReport.do" class="submenuLink">신고 내용</a></li>
 	 	  		<li><a href="noticeForm.do" class="submenuLink">공지 작성</a></li>
 	 	 	 </ul>
 	 	  </li> 
