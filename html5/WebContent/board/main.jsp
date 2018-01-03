@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	   <%@ page import="java.io.PrintWriter" %><!-- 스크립트사용위해  -->
 <%-- <%@ include file="sessionChk.jsp" %> --%>
 <!DOCTYPE html >
 <html>
@@ -12,6 +13,7 @@
 </head>
 <body>
 	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
@@ -95,10 +97,10 @@
 					<img src="images/1.jpg">
 				</div>
 				<div class="item">
-					<img src="images/2.jpg">
+					<img src="images/3.jpg">
 				</div>
 				<div class="item">
-					<img src="images/3.jpg">
+					<img src="images/1.jpg">
 				</div>
 			</div>
 			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
