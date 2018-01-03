@@ -11,9 +11,11 @@
 <title>마지막유머~마유~</title>
 
 </head>
+<style>
+.mySlides {display:none;}
+</style>
 <body>
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
@@ -22,6 +24,9 @@
 	<link rel="stylesheet" type="text/css" href="common.css" />
 	<link rel="stylesheet" type="text/css"
 		href="jquery.toastmessage.css?t5" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	
 
 
 
@@ -84,37 +89,32 @@
 
 		</div>
 	</div>
-<!-- 부트스트랩 캐러솔  -->
-<div class="container">
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="item active">
-					<img src="images/1.jpg">
-				</div>
-				<div class="item">
-					<img src="images/3.jpg">
-				</div>
-				<div class="item">
-					<img src="images/1.jpg">
-				</div>
-			</div>
-			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-				<span class="sr-only">Previous</span>
-			</a>
-			<a class="right carousel-control" href="#myCarousel" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-				<span class="sr-only">Next</span>
-			</a>
-		</div>	
-	</div>
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.js"></script>
+
+<div class="w3-content w3-section" style="max-width:750px">
+  <img class="mySlides" src="smile1.jpg" style="width:100%; height: 400px;" >
+  <img class="mySlides" src="smile2.jpg" style="width:100%; height: 400px;">
+  <img class="mySlides" src="smile3.jpg" style="width:100%; height: 400px;">
+  <img class="mySlides" src="1.jpg" style="width:100%; height: 400px;">
+  <img class="mySlides" src="2.jpg" style="width:100%; height: 400px;">
+  <img class="mySlides" src="3.jpg" style="width:100%; height: 400px;">
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
 
 </body>
 </html>
