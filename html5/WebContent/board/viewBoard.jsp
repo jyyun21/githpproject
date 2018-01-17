@@ -86,7 +86,7 @@
 				<c:if test="${fileList != null }">
 					<c:forEach var="file" items="${fileList }">
 						<img alt="사진 없어요!" src="../upload/${file.fileName }" width="550px">
-						<%-- <video src="upload/${file.fileName }" controls="controls"></video> --%>
+<%-- 						<video src="upload/${file.fileName }" controls="controls"></video>  --%>
 					</c:forEach> 
 				</c:if>
 				<pre width="600" id="pre" style="word-wrap: break-word;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-break:break-all;">${board.content }</pre>

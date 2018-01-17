@@ -63,7 +63,7 @@ create table report(
 );
 select * from REPORT;
 
-update board set best =9 where num=25;
+update boardFree set best =9 where num=12;
 
 create table boardFile (
 	fileName varchar2(50) not null,
